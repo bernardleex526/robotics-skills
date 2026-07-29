@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot name="two_joint_arm">
+  <group name="arm">
+    <chain base_link="base_link" tip_link="tool0"/>
+  </group>
+  <end_effector name="tool" parent_link="tool0" group="arm"/>
+</robot>

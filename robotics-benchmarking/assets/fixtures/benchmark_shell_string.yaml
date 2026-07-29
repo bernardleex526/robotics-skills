@@ -1,0 +1,17 @@
+schema_version: 1
+name: unsafe-shell-string
+command: "python3 evaluate.py | tee result.txt"
+working_directory: .
+output_directory: benchmark-output
+timeout_seconds: 5
+repeats: 1
+warmups: 0
+seed_policy:
+  seeds: [1]
+metrics:
+  - name: score
+    source: stdout_json
+    field: score
+    unit: ratio
+    direction: higher_is_better
+    percentiles: [50]

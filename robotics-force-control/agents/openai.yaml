@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Force Control"
+  short_description: "Audit force sensing and force-control safety contracts"
+  default_prompt: "Use $robotics-force-control for this robotics engineering task."

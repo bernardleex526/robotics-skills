@@ -1,0 +1,3 @@
+PyYAML>=6.0,<7
+jsonschema>=4.18,<5
+skills-ref==0.1.1; python_version >= "3.11"

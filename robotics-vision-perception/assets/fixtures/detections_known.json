@@ -1,0 +1,12 @@
+{
+  "ground_truth": [
+    {"box": [0, 0, 10, 10], "class": "box", "image_id": "frame-1"},
+    {"box": [20, 20, 5, 5], "class": "cylinder", "image_id": "frame-1"}
+  ],
+  "iou_threshold": 0.5,
+  "predictions": [
+    {"box": [0, 0, 10, 10], "class": "box", "image_id": "frame-1", "score": 0.9},
+    {"box": [0, 0, 3, 3], "class": "cylinder", "image_id": "frame-1", "score": 0.8}
+  ],
+  "score_threshold": 0.5
+}

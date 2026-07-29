@@ -1,0 +1,68 @@
+{
+  "candidate": {
+    "child_frame": "camera_optical_frame",
+    "parent_frame": "tool0",
+    "rotation_xyzw": [0, 0, 0, 1],
+    "translation_m": [0, 0, 0]
+  },
+  "frames": {
+    "motion_a": "tool_relative_motion",
+    "motion_b": "camera_relative_motion",
+    "x_child": "camera_optical_frame",
+    "x_parent": "tool0"
+  },
+  "mode": "eye_in_hand",
+  "samples": [
+    {
+      "a": {"rotation_xyzw": [0.70710678, 0, 0, 0.70710678], "translation_m": [0, 0, 0]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 1000000000,
+      "b": {"rotation_xyzw": [0.70710678, 0, 0, 0.70710678], "translation_m": [0, 0, 0]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 1010000000,
+      "id": "fit-x", "partition": "fit"
+    },
+    {
+      "a": {"rotation_xyzw": [0, 0.70710678, 0, 0.70710678], "translation_m": [0.2, 0, 0]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 2000000000,
+      "b": {"rotation_xyzw": [0, 0.70710678, 0, 0.70710678], "translation_m": [0.2, 0, 0]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 2000500000,
+      "id": "fit-y", "partition": "fit"
+    },
+    {
+      "a": {"rotation_xyzw": [0, 0, 0.70710678, 0.70710678], "translation_m": [0, 0.2, 0]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 3000000000,
+      "b": {"rotation_xyzw": [0, 0, 0.70710678, 0.70710678], "translation_m": [0, 0.2, 0]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 3000500000,
+      "id": "fit-z", "partition": "fit"
+    },
+    {
+      "a": {"rotation_xyzw": [0.38268343, 0, 0, 0.92387953], "translation_m": [0, 0, 0.2]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 4000000000,
+      "b": {"rotation_xyzw": [0.38268343, 0, 0, 0.92387953], "translation_m": [0, 0, 0.2]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 4000500000,
+      "id": "fit-x-small", "partition": "fit"
+    },
+    {
+      "a": {"rotation_xyzw": [0.5, 0.5, 0.5, 0.5], "translation_m": [0.2, 0.2, 0.1]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 5000000000,
+      "b": {"rotation_xyzw": [0.5, 0.5, 0.5, 0.5], "translation_m": [0.2, 0.2, 0.1]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 5000500000,
+      "id": "holdout-diagonal", "partition": "holdout"
+    },
+    {
+      "a": {"rotation_xyzw": [0, 0.38268343, 0, 0.92387953], "translation_m": [-0.1, 0.1, 0.2]},
+      "a_label": "tool_relative_motion", "a_stamp_ns": 6000000000,
+      "b": {"rotation_xyzw": [0, 0.38268343, 0, 0.92387953], "translation_m": [-0.1, 0.1, 0.2]},
+      "b_label": "camera_relative_motion", "b_stamp_ns": 6000500000,
+      "id": "holdout-y-small", "partition": "holdout"
+    }
+  ],
+  "thresholds": {
+    "max_fit_rotation_rmse_deg": 0.01,
+    "max_fit_translation_rmse_m": 0.0001,
+    "max_holdout_rotation_rmse_deg": 0.01,
+    "max_holdout_translation_rmse_m": 0.0001,
+    "max_pairing_skew_ms": 2,
+    "min_rotation_axis_separation_deg": 20,
+    "min_translation_span_m": 0.1
+  }
+}

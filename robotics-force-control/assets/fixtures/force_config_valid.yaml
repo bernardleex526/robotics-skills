@@ -1,0 +1,35 @@
+schema_version: 1
+interfaces:
+  wrench_axes: [fx, fy, fz, tx, ty, tz]
+frames:
+  sensor: ft_sensor
+  control: tool0
+  world: base_link
+  gravity: base_link
+kinematics:
+  package: example_robot_description
+  plugin: kdl_kinematics_plugin/KDLKinematicsPlugin
+selected_axes: [false, false, true, false, false, false]
+admittance:
+  mass: [5, 5, 5, 0.5, 0.5, 0.5]
+  damping: [50, 50, 50, 5, 5, 5]
+  stiffness: [0, 0, 100, 0, 0, 5]
+payload:
+  mass_kg: 2.0
+  cog_m: [0, 0, 0.1]
+  gravity_m_s2: 9.80665
+filters:
+  wrench_cutoff_hz: 30
+  command_cutoff_hz: 20
+timing:
+  sensor_rate_hz: 500
+  control_rate_hz: 500
+  max_message_age_s: 0.01
+limits:
+  max_force_N: [100, 100, 100]
+  max_torque_Nm: [10, 10, 10]
+  command_slew_per_s: [0.1, 0.1, 0.1, 0.5, 0.5, 0.5]
+gravity_loaded: true
+watchdog:
+  timeout_s: 0.02
+  timeout_safe_state: gravity_compensated_hold

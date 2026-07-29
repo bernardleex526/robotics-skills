@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Hand-Eye Calibration"
+  short_description: "Validate hand-eye calibration data and residuals"
+  default_prompt: "Use $robotics-hand-eye-calibration for this robotics engineering task."

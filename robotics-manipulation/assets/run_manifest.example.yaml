@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-manipulation
+check: moveit_config
+input: fixtures/moveit_valid
+output: result.json

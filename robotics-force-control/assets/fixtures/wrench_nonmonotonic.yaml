@@ -1,0 +1,14 @@
+csv: wrench_nonmonotonic.csv
+time_unit: s
+force_unit: N
+torque_unit: N*m
+frame_id: ft_sensor
+columns:
+  time: time_s
+  wrench: [fx_N, fy_N, fz_N, tx_Nm, ty_Nm, tz_Nm]
+saturation_limits: [100, 100, 100, 10, 10, 10]
+gates:
+  max_saturation_fraction: 0
+  max_abs_bias: [2, 2, 2, 0.2, 0.2, 0.2]
+  max_rms: [1, 1, 1, 0.1, 0.1, 0.1]
+  max_abs_drift_per_s: [20, 20, 20, 2, 2, 2]

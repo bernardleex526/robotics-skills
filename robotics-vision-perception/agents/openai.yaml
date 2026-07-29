@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Vision Perception"
+  short_description: "Validate and diagnose ROS 2 vision pipelines"
+  default_prompt: "Use $robotics-vision-perception for this robotics engineering task."

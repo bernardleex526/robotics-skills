@@ -1,0 +1,8 @@
+{
+  "ground_truth": [
+    {"box": [0, 0, -1, 10], "class": "box", "image_id": "frame-1"}
+  ],
+  "iou_threshold": 0.5,
+  "predictions": [],
+  "score_threshold": 0.5
+}

@@ -1,0 +1,6 @@
+urdf: robot.urdf
+srdf: robot.srdf
+kinematics: kinematics.yaml
+joint_limits: joint_limits.yaml
+planning_pipelines: planning_pipelines.yaml
+moveit_controllers: moveit_controllers.yaml

@@ -1,0 +1,7 @@
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 1.0
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 0.8

@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-3d-perception
+check: pointcloud_contract
+input: fixtures/cloud_valid.json
+output: result.json

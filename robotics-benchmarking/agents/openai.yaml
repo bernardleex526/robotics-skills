@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Benchmarking"
+  short_description: "Run and aggregate bounded robotics benchmarks"
+  default_prompt: "Use $robotics-benchmarking for this robotics engineering task."

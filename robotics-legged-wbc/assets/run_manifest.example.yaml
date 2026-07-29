@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-legged-wbc
+check: wbc_contract
+input: fixtures/wbc_valid.yaml
+output: result.json

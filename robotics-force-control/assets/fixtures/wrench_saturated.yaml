@@ -1,0 +1,14 @@
+csv: wrench_saturated.csv
+time_unit: s
+force_unit: N
+torque_unit: N*m
+frame_id: ft_sensor
+columns:
+  time: time_s
+  wrench: [fx_N, fy_N, fz_N, tx_Nm, ty_Nm, tz_Nm]
+saturation_limits: [100, 100, 100, 10, 10, 10]
+gates:
+  max_saturation_fraction: 0
+  max_abs_bias: [200, 200, 200, 20, 20, 20]
+  max_rms: [200, 200, 200, 20, 20, 20]
+  max_abs_drift_per_s: [10000, 10000, 10000, 1000, 1000, 1000]

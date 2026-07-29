@@ -1,0 +1,13 @@
+{
+  "frame_id": "map",
+  "ground_truth": [
+    {"center_m": [0, 0, 0], "class": "box", "frame_id": "map", "size_m": [1, 1, 1], "yaw_rad": 0}
+  ],
+  "max_center_distance_m": 0.5,
+  "max_size_error_ratio": 0.2,
+  "max_yaw_error_deg": 15,
+  "predictions": [
+    {"center_m": [0, 0, 0], "class": "box", "frame_id": "base_link", "score": 0.9, "size_m": [1, 1, 1], "yaw_rad": 0}
+  ],
+  "score_threshold": 0.5
+}

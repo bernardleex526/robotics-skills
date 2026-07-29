@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-vision-perception
+check: camera_contract
+input: fixtures/camera_valid.json
+output: result.json

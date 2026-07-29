@@ -1,0 +1,22 @@
+schema_version: 1
+claim: "Floating source must be rejected."
+source:
+  repository: https://example.org/robotics/method-a.git
+  revision: main
+environment:
+  container_digest: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+datasets:
+  - source: https://example.org/dataset
+    license: Apache-2.0
+    split: test
+    sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+seeds: [1]
+repeat_policy: {repeats: 1, failed_runs: include}
+baseline:
+  command: [python3, evaluate.py]
+  config_sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+metrics:
+  - {name: success_rate, unit: ratio, direction: higher_is_better}
+ablations: []
+evidence: [evidence/run-1.json]
+deviations: []

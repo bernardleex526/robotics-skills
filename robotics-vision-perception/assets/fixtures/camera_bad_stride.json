@@ -1,0 +1,24 @@
+{
+  "acquisition_stamps_ns": [1000000000, 1033333333],
+  "camera_info": {
+    "d": [0, 0, 0, 0, 0],
+    "distortion_model": "plumb_bob",
+    "frame_id": "camera_optical_frame",
+    "height": 2,
+    "k": [1, 0, 0, 0, 1, 0, 0, 0, 1],
+    "p": [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0],
+    "r": [1, 0, 0, 0, 1, 0, 0, 0, 1],
+    "width": 2
+  },
+  "image": {
+    "data_length": 11,
+    "encoding": "rgb8",
+    "frame_id": "camera_optical_frame",
+    "height": 2,
+    "is_bigendian": false,
+    "step": 6,
+    "width": 2
+  },
+  "max_pairing_skew_ms": 2,
+  "pairing_skew_ms": [0.1, 0.2]
+}

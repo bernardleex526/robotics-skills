@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Legged WBC"
+  short_description: "Audit legged whole-body-control contracts"
+  default_prompt: "Use $robotics-legged-wbc for this robotics engineering task."

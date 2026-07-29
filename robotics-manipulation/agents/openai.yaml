@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Manipulation"
+  short_description: "Audit MoveIt 2 planning and execution configurations"
+  default_prompt: "Use $robotics-manipulation for this robotics engineering task."

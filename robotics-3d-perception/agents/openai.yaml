@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics 3D Perception"
+  short_description: "Validate point clouds and 3D perception results"
+  default_prompt: "Use $robotics-3d-perception for this robotics engineering task."

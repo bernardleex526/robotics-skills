@@ -1,0 +1,28 @@
+schema_version: 1
+claim: "State one paper claim and an acceptance tolerance."
+source:
+  repository: https://example.org/owner/project.git
+  revision: 0123456789abcdef0123456789abcdef01234567
+environment:
+  container_digest: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+datasets:
+  - source: https://example.org/dataset
+    license: LICENSE-ID
+    split: held-out-test
+    sha256: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+seeds: [11, 23, 47]
+repeat_policy:
+  repeats: 3
+  failed_runs: include
+baseline:
+  command: [python3, evaluate.py, --config, baseline.yaml]
+  config_sha256: cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+metrics:
+  - name: success_rate
+    unit: ratio
+    direction: higher_is_better
+ablations:
+  - name: remove_one_component
+    changed_variables: [component_name]
+evidence: [evidence/raw-runs/]
+deviations: []

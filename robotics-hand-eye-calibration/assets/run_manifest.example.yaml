@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-hand-eye-calibration
+check: handeye_validation
+input: fixtures/handeye_valid.json
+output: result.json

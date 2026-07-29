@@ -1,0 +1,120 @@
+schema_version: 1
+skills:
+  robotics-vision-perception:
+    primary_scripts:
+      - scripts/check_camera_contract.py
+      - scripts/evaluate_vision_results.py
+    valid_fixture: assets/fixtures/camera_valid.json
+    invalid_fixture: assets/fixtures/camera_bad_stride.json
+    cases:
+      - script: scripts/check_camera_contract.py
+        valid_fixture: assets/fixtures/camera_valid.json
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/camera_bad_stride.json
+        invalid_exits: [1]
+      - script: scripts/evaluate_vision_results.py
+        valid_fixture: assets/fixtures/detections_known.json
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/detections_bad_box.json
+        invalid_exits: [1]
+  robotics-3d-perception:
+    primary_scripts:
+      - scripts/check_pointcloud_contract.py
+      - scripts/evaluate_3d_results.py
+    valid_fixture: assets/fixtures/cloud_valid.json
+    invalid_fixture: assets/fixtures/cloud_truncated.json
+    cases:
+      - script: scripts/check_pointcloud_contract.py
+        valid_fixture: assets/fixtures/cloud_valid.json
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/cloud_truncated.json
+        invalid_exits: [1]
+      - script: scripts/evaluate_3d_results.py
+        valid_fixture: assets/fixtures/objects_known.json
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/objects_bad_frame.json
+        invalid_exits: [1]
+  robotics-manipulation:
+    primary_scripts:
+      - scripts/check_moveit_config.py
+    valid_fixture: assets/fixtures/moveit_valid
+    invalid_fixture: assets/fixtures/moveit_bad_controller
+    cases:
+      - script: scripts/check_moveit_config.py
+        valid_fixture: assets/fixtures/moveit_valid
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/moveit_bad_controller
+        invalid_exits: [1]
+  robotics-hand-eye-calibration:
+    primary_scripts:
+      - scripts/validate_handeye.py
+    valid_fixture: assets/fixtures/handeye_valid.json
+    invalid_fixture: assets/fixtures/handeye_single_axis.json
+    cases:
+      - script: scripts/validate_handeye.py
+        valid_fixture: assets/fixtures/handeye_valid.json
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/handeye_single_axis.json
+        invalid_exits: [1]
+  robotics-force-control:
+    primary_scripts:
+      - scripts/analyze_wrench_log.py
+      - scripts/check_force_config.py
+    valid_fixture: assets/fixtures/force_config_valid.yaml
+    invalid_fixture: assets/fixtures/force_config_unsafe.yaml
+    cases:
+      - script: scripts/analyze_wrench_log.py
+        valid_fixture: assets/fixtures/wrench_nominal.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/wrench_saturated.yaml
+        invalid_exits: [1]
+      - script: scripts/check_force_config.py
+        valid_fixture: assets/fixtures/force_config_valid.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/force_config_unsafe.yaml
+        invalid_exits: [1]
+  robotics-legged-wbc:
+    primary_scripts:
+      - scripts/check_wbc_contract.py
+    valid_fixture: assets/fixtures/wbc_valid.yaml
+    invalid_fixture: assets/fixtures/wbc_bad_joint_order.yaml
+    cases:
+      - script: scripts/check_wbc_contract.py
+        valid_fixture: assets/fixtures/wbc_valid.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/wbc_bad_joint_order.yaml
+        invalid_exits: [1]
+  robotics-research-reproduction:
+    primary_scripts:
+      - scripts/validate_reproduction_manifest.py
+    valid_fixture: assets/fixtures/reproduction_valid.yaml
+    invalid_fixture: assets/fixtures/reproduction_floating_ref.yaml
+    cases:
+      - script: scripts/validate_reproduction_manifest.py
+        valid_fixture: assets/fixtures/reproduction_valid.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/reproduction_floating_ref.yaml
+        invalid_exits: [1]
+  robotics-benchmarking:
+    primary_scripts:
+      - scripts/validate_benchmark_manifest.py
+      - scripts/run_benchmark.py
+      - scripts/aggregate_results.py
+    valid_fixture: assets/fixtures/benchmark_echo.yaml
+    invalid_fixture: assets/fixtures/benchmark_shell_string.yaml
+    cases:
+      - script: scripts/validate_benchmark_manifest.py
+        valid_fixture: assets/fixtures/benchmark_echo.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/benchmark_shell_string.yaml
+        invalid_exits: [1]
+      - script: scripts/run_benchmark.py
+        valid_fixture: assets/fixtures/benchmark_echo.yaml
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/benchmark_shell_string.yaml
+        invalid_exits: [1]
+      - script: scripts/aggregate_results.py
+        valid_fixture: assets/fixtures/mixed_results
+        valid_exit: 0
+        invalid_fixture: assets/fixtures/invalid_results
+        invalid_exits: [2]

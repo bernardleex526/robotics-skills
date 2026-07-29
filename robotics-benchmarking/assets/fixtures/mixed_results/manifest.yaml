@@ -1,0 +1,6 @@
+schema_version: 1
+metrics:
+  - name: score
+    unit: ratio
+    direction: higher_is_better
+    percentiles: [50, 95]

@@ -1,0 +1,5 @@
+schema_version: 1
+skill: robotics-force-control
+check: force_config
+input: fixtures/force_config_valid.yaml
+output: result.json

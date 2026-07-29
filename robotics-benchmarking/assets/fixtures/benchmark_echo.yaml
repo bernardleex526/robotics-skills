@@ -1,0 +1,21 @@
+schema_version: 1
+name: deterministic-echo
+command:
+  - python3
+  - -c
+  - "import json; print(json.dumps({'score': 0.9}))"
+working_directory: .
+output_directory: benchmark-output
+timeout_seconds: 5
+repeats: 3
+warmups: 1
+seed_policy:
+  seeds: [11, 23, 47]
+metrics:
+  - name: score
+    source: stdout_json
+    field: score
+    unit: ratio
+    direction: higher_is_better
+    percentiles: [50, 95]
+    threshold: 0.8

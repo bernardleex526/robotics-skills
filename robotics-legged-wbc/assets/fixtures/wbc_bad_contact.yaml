@@ -1,0 +1,23 @@
+schema_version: 1
+urdf: wbc_robot.urdf
+base: {link: base_link, representation: floating_base_quaternion, position_dimension: 7, velocity_dimension: 6, quaternion_order: xyzw}
+actuated_joint_order: [fl_hip, fr_hip, rl_hip, rr_hip]
+expected_total_mass_kg: 14
+mass_tolerance_kg: 0.001
+contact_frames: [fl_foot, fr_foot, rl_foot, missing_foot]
+state_estimator: {rate_hz: 500, max_state_age_s: 0.01, world_frame: odom, quaternion_order: xyzw}
+contact_estimator: {contact_order: [fl_foot, fr_foot, rl_foot, missing_foot], max_contact_age_s: 0.01}
+controller: {rate_hz: 500, command_timeout_s: 0.02}
+rate_contract: {min_estimator_to_controller_ratio: 1.0}
+contacts:
+  - {frame: fl_foot, friction_coefficient: 0.6, normal_force_min_N: 0, normal_force_max_N: 250}
+  - {frame: fr_foot, friction_coefficient: 0.6, normal_force_min_N: 0, normal_force_max_N: 250}
+  - {frame: rl_foot, friction_coefficient: 0.6, normal_force_min_N: 0, normal_force_max_N: 250}
+  - {frame: missing_foot, friction_coefficient: 0.6, normal_force_min_N: 0, normal_force_max_N: 250}
+tasks: [{name: posture, dimension: 4, weight: 1, priority: 0}]
+solver: {max_solve_time_s: 0.0015, max_iterations: 30, max_primal_residual: 0.0001, max_dual_residual: 0.0001}
+command_limits:
+  max_torque_Nm: [60, 60, 60, 60]
+  max_joint_velocity_rad_s: [10, 10, 10, 10]
+  max_position_error_rad: [0.3, 0.3, 0.3, 0.3]
+fallback: {command_timeout_state: damping_mode, estimator_invalid_state: support_hold, solver_failure_state: damping_mode, degraded_state: controlled_lowering}

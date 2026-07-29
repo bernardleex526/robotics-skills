@@ -1,0 +1,18 @@
+schema_version: 1
+name: perception-latency
+command: [python3, evaluate.py, --config, config.yaml, --seed, "{seed}"]
+working_directory: .
+output_directory: evidence/perception-latency-run
+timeout_seconds: 300
+repeats: 5
+warmups: 1
+seed_policy:
+  seeds: [11, 23, 47, 59, 71]
+metrics:
+  - name: latency_ms
+    source: stdout_json
+    field: latency_ms
+    unit: ms
+    direction: lower_is_better
+    percentiles: [50, 95]
+    threshold: 50

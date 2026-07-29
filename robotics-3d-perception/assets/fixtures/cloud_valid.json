@@ -1,0 +1,20 @@
+{
+  "data_hex": "0000803f0000004000004040000080bf0000003f00008040",
+  "fields": [
+    {"count": 1, "datatype": 7, "name": "x", "offset": 0},
+    {"count": 1, "datatype": 7, "name": "y", "offset": 4},
+    {"count": 1, "datatype": 7, "name": "z", "offset": 8}
+  ],
+  "frame_id": "lidar_frame",
+  "height": 1,
+  "is_bigendian": false,
+  "is_dense": true,
+  "point_step": 12,
+  "requirements": {
+    "ring_field": null,
+    "time_field": null
+  },
+  "row_step": 24,
+  "stamp_ns": 1000000000,
+  "width": 2
+}

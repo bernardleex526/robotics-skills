@@ -1,0 +1,4 @@
+interface:
+  display_name: "Robotics Research Reproduction"
+  short_description: "Validate reproducible robotics experiment manifests"
+  default_prompt: "Use $robotics-research-reproduction for this robotics engineering task."
