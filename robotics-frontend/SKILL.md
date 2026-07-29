@@ -1,7 +1,7 @@
 ---
 name: robotics-frontend
-description: 机器人 Web 前端开发助手。当用户开发机器人相关的 Web 界面时使用，涵盖通过 rosbridge/WebSocket 接入 ROS/ROS 2 数据、Foxglove Studio 及其 web-sdk 自定义面板、地图/点云/TF/轨迹可视化、实时状态监控仪表盘、远程操控（teleop）界面开发。触发词示例：机器人前端、机器人仪表盘、rosbridge、roslibjs、Foxglove、webviz、点云可视化、机器人监控页面、远程操控界面、teleop web、robot dashboard。
-agent_created: true
+description: 机器人 Web 前端开发助手。当用户开发机器人相关的 Web 界面时使用，涵盖通过 rosbridge/WebSocket 接入 ROS/ROS 2 数据、Foxglove Studio 与自定义 extension、地图/点云/TF/轨迹可视化、实时状态监控仪表盘、远程操控（teleop）界面开发。触发词示例：机器人前端、机器人仪表盘、rosbridge、roslibjs、Foxglove、webviz、点云可视化、机器人监控页面、远程操控界面、teleop web、robot dashboard。
+license: LICENSE.txt
 ---
 
 # Robotics Frontend
@@ -14,7 +14,7 @@ Assist with building web frontends for robots: connecting to ROS/ROS 2 over rosb
 
 - **只要可视化/调试，不写代码** → Path A: Foxglove Studio 现成工具
 - **要定制界面（监控页/操控台/交付给客户）** → Path B: 自研 Web 前端（本技能主体）
-- **在现有网页里嵌 3D 机器人视图** → Path C: 只集成可视化组件（ros3djs 或 Foxglove web-sdk 面板）
+- **在现有网页里嵌 3D 机器人视图** → Path C: 只集成可视化组件（ros3djs 或自建 Three.js 视图）
 
 ## Path A: Foxglove Studio（零代码）
 
@@ -28,19 +28,19 @@ Assist with building web frontends for robots: connecting to ROS/ROS 2 over rosb
 
 - 优先 `foxglove_bridge`（WebSocket，协议更高效，支持 schema 自省）；兼容性优先时用经典 `rosbridge_suite` + `roslibjs`。
 - 封装单例 `RosConnection`：自动重连（指数退避）、连接状态事件、topic 订阅管理。参考 `references/rosbridge_integration.md`。
-- **必须处理断线**：机器人 WiFi 环境必断线；UI 要显示连接状态并在恢复后重新订阅。
+- **必须处理断线**：移动机器人和无线网络存在可预期的断连；UI 要显示连接状态，并验证恢复后的订阅/发布行为。
 
 ### 2. 数据流设计
 
-- 高频 topic（`/odom` 30 Hz、`/joint_states` 50+ Hz）：**节流**（10–15 Hz 足够显示）+ 在渲染循环外用 ref/zustand transient 更新，避免 React 高频重渲染。
-- 大消息（点云、图像、地图）：点云用 `sensor_msgs/PointCloud2` 二进制解析 + Three.js Points；图像优先走独立 WebRTC/web_video_server，别用 rosbridge 传 raw image（带宽爆炸）。
+- 高频 topic：按视图刷新率、设备性能和交互延迟预算做**节流/采样**，并在渲染循环外用 ref/zustand transient 更新，避免无意义的 React 高频重渲染。
+- 大消息（点云、图像、地图）：点云按 `sensor_msgs/msg/PointCloud2` 的 fields/step/endianness 解析后送 Three.js；图像优先走经过鉴权的 WebRTC/视频服务，避免 rosbridge 传 raw image。
 - 地图 `/map`（OccupancyGrid）：只在更新时重绘到 canvas，做 PNG 缓存层。
 
 ### 3. 可视化选型
 
 | 内容 | 方案 |
 |---|---|
-| 完整 rviz 式视图 | `@foxglove/web-sdk` + Foxglove 自定义面板，或直接嵌 `ros3djs` |
+| 完整 rviz 式视图 | 直接用 Foxglove（桌面/网页）而非自研；必须内嵌时用 `ros3djs`，或用 react-three-fiber 自建 |
 | 自定义 3D 场景 | Three.js / react-three-fiber 自建（TF 树驱动模型位姿） |
 | 2D 地图 + 路径 + 机器人位姿 | canvas/SVG 自绘（OccupancyGrid 渲染 + 箭头），轻量可控 |
 | 状态仪表盘 | ECharts/Recharts + MUI/Tailwind |
@@ -48,21 +48,21 @@ Assist with building web frontends for robots: connecting to ROS/ROS 2 over rosb
 
 ### 4. 操控（teleop）界面
 
-- 虚拟摇杆发 `/cmd_vel`：10–20 Hz 定时发（Twist 协议要求持续发送），**松开即停发**，机器人端配 velocity timeout。
-- **安全规则（前端必须做）**：连接断开 → 立即显示失联遮罩并通知后端停车；控制指令做前端限幅；急停按钮做成最显眼元素，点击直接 publish 到急停 topic 并本地停止一切运动指令。
+- 虚拟摇杆发 `/cmd_vel`：频率与底盘 watchdog 契约一致；松开时立即发布零值，并在控制会话存续期间按契约发送安全心跳。机器人端必须有有界 command timeout。
+- **安全边界**：连接断开/失焦时清零本地目标并显示失联，机器人端负责超时进入安全状态。浏览器按钮只能称“软件停止请求”，不能作为安全额定急停；硬件安全链路、驱动限幅和状态机不得依赖网页。
 - 键盘控制：keydown/keyup 状态机，防止按键卡死导致持续运动。
 
 ### 5. 部署
 
-- 前端打包成静态文件放机器人上（nginx/Caddy 或直接 `python3 -m http.server` 原型期）。
+- 前端打包后用受维护的 HTTPS/WSS 反向代理部署；`python3 -m http.server` 只用于隔离网络中的短时开发预览。
 - 机器人多机/多网段：WebSocket 地址做成可配置（URL 参数或配置文件），别硬编码 IP。
-- 跨域：rosbridge WebSocket 无 CORS 问题；HTTP API（如 map server REST）需要后端配 CORS。
+- WebSocket 不使用普通 fetch CORS 流程，但仍要校验 Origin、认证/授权、TLS、网络 ACL 和 topic 白名单；HTTP API 另行配置最小 CORS 策略。
 
 详细代码模式（连接单例、节流 hook、OccupancyGrid 渲染、cmd_vel 摇杆）见 `references/rosbridge_integration.md`。
 
 ## Path C: 嵌入现成组件
 
-- **Foxglove 自定义面板**：在 Foxglove 里写 React 面板（`@foxglove/extension`），适合「90% 现成 + 10% 定制」。
+- **Foxglove 自定义面板**：在 Foxglove 里写 React 面板（`@foxglove/extension`），适合复用现有可视化并补充项目专用交互。
 - **ros3djs**：老牌 Three.js 封装，直接给 `OccupancyGridClient`、`UrdfClient`，维护一般但够用。
 - **robot-web-tools 全家桶**：roslibjs + ros2djs + ros3djs，示例多，适合快速原型。
 
@@ -73,9 +73,12 @@ Assist with building web frontends for robots: connecting to ROS/ROS 2 over rosb
 | rosbridge 连不上 | 确认 9090 端口开放；`ros2 node list` 看 rosbridge 在不在；容器部署要映射端口 |
 | 页面卡死 | 高频 topic 未节流直接 setState；点云每帧新建 Float32Array |
 | 图像黑屏/延迟大 | rosbridge 传 raw image 带宽不够；换 `compressed` 传输或 web_video_server/WebRTC |
-| TF 变换报错 | 浏览器端 TF 树缺静态变换；确保订阅 `/tf_static` 且用 `is_static` 区分 |
+| TF 变换报错 | 浏览器端 TF 树缺静态变换；按 `/tf` 与 `/tf_static` 的来源分别处理，`tf2_msgs/msg/TFMessage` 没有 `is_static` 字段 |
 | 地图显示偏移 | OccupancyGrid 的 origin 没应用；注意 canvas y 轴翻转 |
 | 多页面状态不一致 | RosConnection 做成模块级单例，别每个组件各连一份 |
+
+> roslibjs 同时服务 ROS 1/ROS 2 生态，message type 字符串兼容性受 rosbridge 版本影响。
+> 本技能示例使用 ROS 2 规范名；接入前用目标桥接器做一次订阅/发布契约测试。
 
 ## References
 

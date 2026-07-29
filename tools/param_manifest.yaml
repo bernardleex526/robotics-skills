@@ -1,0 +1,256 @@
+# Reviewed parameter snapshot used by tools/check_doc_params.py.
+# This file is not fetched from upstream at runtime.
+# Every project entry states its ROS distribution or upstream branch and the
+# primary source used during review.
+
+verified: 2026-07-29
+
+projects:
+  slam_toolbox_humble:
+    distro: humble
+    source: https://github.com/SteveMacenski/slam_toolbox/tree/humble
+    owns:
+      - '^correlation_search_space_'
+      - '^loop_search_'
+      - '^loop_match_'
+      - '^link_match_'
+      - '^link_scan_'
+      - '^minimum_travel_'
+      - '^scan_buffer_'
+      - '^(coarse|fine)_search_angle_offset$'
+      - '^coarse_angle_resolution$'
+      - '^(angle|distance)_variance_penalty$'
+      - '^minimum_(angle|distance)_penalty$'
+      - '^do_loop_closing$'
+      - '^use_scan_'
+      - '^occupancy_threshold$'
+      - '^min_pass_through$'
+    known:
+      - solver_plugin
+      - ceres_linear_solver
+      - ceres_preconditioner
+      - ceres_trust_strategy
+      - ceres_dogleg_type
+      - ceres_loss_function
+      - odom_frame
+      - map_frame
+      - base_frame
+      - scan_topic
+      - use_map_saver
+      - mode
+      - debug_logging
+      - throttle_scans
+      - transform_publish_period
+      - map_update_interval
+      - resolution
+      - restamp_tf
+      - min_laser_range
+      - max_laser_range
+      - minimum_time_interval
+      - transform_timeout
+      - tf_buffer_duration
+      - stack_size_to_use
+      - enable_interactive_mode
+      - use_scan_matching
+      - use_scan_barycenter
+      - minimum_travel_distance
+      - minimum_travel_heading
+      - check_min_dist_and_heading_precisely
+      - scan_buffer_size
+      - scan_buffer_maximum_scan_distance
+      - link_match_minimum_response_fine
+      - link_scan_maximum_distance
+      - loop_search_maximum_distance
+      - do_loop_closing
+      - loop_match_minimum_chain_size
+      - loop_match_maximum_variance_coarse
+      - loop_match_minimum_response_coarse
+      - loop_match_minimum_response_fine
+      - correlation_search_space_dimension
+      - correlation_search_space_resolution
+      - correlation_search_space_smear_deviation
+      - loop_search_space_dimension
+      - loop_search_space_resolution
+      - loop_search_space_smear_deviation
+      - distance_variance_penalty
+      - angle_variance_penalty
+      - fine_search_angle_offset
+      - coarse_search_angle_offset
+      - coarse_angle_resolution
+      - minimum_angle_penalty
+      - minimum_distance_penalty
+      - use_response_expansion
+      - min_pass_through
+      - occupancy_threshold
+
+  joint_trajectory_controller_humble:
+    distro: humble
+    source: https://control.ros.org/humble/doc/ros2_controllers/joint_trajectory_controller/doc/parameters.html
+    owns:
+      - '^constraints\.'
+      - '^gains\.'
+    known:
+      - joints
+      - command_joints
+      - command_interfaces
+      - state_interfaces
+      - allow_partial_joints_goal
+      - open_loop_control
+      - allow_integration_in_goal_trajectories
+      - state_publish_rate
+      - set_last_command_interface_value_as_state_on_activation
+      - action_monitor_rate
+      - interpolation_method
+      - allow_nonzero_velocity_at_trajectory_end
+      - cmd_timeout
+      - constraints.stopped_velocity_tolerance
+      - constraints.goal_time
+      - gains.p
+      - gains.i
+      - gains.d
+      - gains.i_clamp
+      - gains.ff_velocity_scale
+      - gains.normalize_error
+      - gains.angle_wraparound
+
+  lio_sam_upstream:
+    branch: master
+    source: https://github.com/TixiaoShan/LIO-SAM/blob/master/config/params.yaml
+    owns:
+      - '^imu[A-Z]'
+      - '^extrinsic[A-Z]'
+      - '^historyKeyframe'
+      - '^loopClosure'
+      - '^gps[A-Z]'
+    known:
+      - imuAccNoise
+      - imuGyrNoise
+      - imuAccBiasN
+      - imuGyrBiasN
+      - imuGravity
+      - imuRPYWeight
+      - extrinsicTrans
+      - extrinsicRot
+      - extrinsicRPY
+      - useImuHeadingInitialization
+      - useGpsElevation
+      - gpsCovThreshold
+      - gpsTopic
+      - poseCovThreshold
+      - loopClosureEnableFlag
+      - loopClosureFrequency
+      - surroundingKeyframeSize
+      - historyKeyframeSearchRadius
+      - historyKeyframeSearchTimeDiff
+      - historyKeyframeSearchNum
+      - historyKeyframeFitnessScore
+
+  fast_lio_upstream:
+    branch: main
+    source: https://github.com/hku-mars/FAST_LIO/blob/main/config/velodyne.yaml
+    owns:
+      - '^(acc|gyr)_cov$'
+      - '^b_(acc|gyr)_cov$'
+      - '^extrinsic_[TR]$'
+      - '^timestamp_unit$'
+      - '^time_offset_lidar_to_imu$'
+    known:
+      - lid_topic
+      - imu_topic
+      - time_sync_en
+      - time_offset_lidar_to_imu
+      - lidar_type
+      - scan_line
+      - scan_rate
+      - timestamp_unit
+      - blind
+      - acc_cov
+      - gyr_cov
+      - b_acc_cov
+      - b_gyr_cov
+      - fov_degree
+      - det_range
+      - extrinsic_est_en
+      - extrinsic_T
+      - extrinsic_R
+      - path_en
+      - scan_publish_en
+      - dense_publish_en
+      - scan_bodyframe_pub_en
+      - pcd_save_en
+
+  orb_slam3_upstream:
+    branch: master
+    source: https://github.com/UZ-SLAMLab/ORB_SLAM3/blob/master/Examples/Monocular-Inertial/EuRoC.yaml
+    owns:
+      - '^ORBextractor\.'
+      - '^IMU\.'
+    known:
+      - ORBextractor.nFeatures
+      - ORBextractor.scaleFactor
+      - ORBextractor.nLevels
+      - ORBextractor.iniThFAST
+      - ORBextractor.minThFAST
+      - IMU.NoiseGyro
+      - IMU.NoiseAcc
+      - IMU.GyroWalk
+      - IMU.AccWalk
+      - IMU.Frequency
+
+  cartographer_ros:
+    source: https://google-cartographer-ros.readthedocs.io/en/latest/configuration.html
+    owns: []
+    known:
+      - map_frame
+      - tracking_frame
+      - published_frame
+      - odom_frame
+      - provide_odom_frame
+      - publish_frame_projected_to_2d
+      - use_odometry
+      - use_nav_sat
+      - use_landmarks
+      - num_laser_scans
+      - num_multi_echo_laser_scans
+      - num_subdivisions_per_laser_scan
+      - num_point_clouds
+      - lookup_transform_timeout_sec
+      - submap_publish_period_sec
+      - pose_publish_period_sec
+      - publish_to_tf
+      - publish_tracked_pose
+      - trajectory_publish_period_sec
+      - rangefinder_sampling_ratio
+      - odometry_sampling_ratio
+      - fixed_frame_sampling_ratio
+      - imu_sampling_ratio
+
+  nav2_humble:
+    distro: humble
+    source: https://github.com/ros-navigation/navigation2/blob/humble/nav2_bringup/params/nav2_params.yaml
+    owns:
+      - '^min_[xy]_velocity_threshold$'
+      - '^min_theta_velocity_threshold$'
+      - '^progress_checker_plugin$'
+    known:
+      - controller_frequency
+      - min_x_velocity_threshold
+      - min_y_velocity_threshold
+      - min_theta_velocity_threshold
+      - failure_tolerance
+      - progress_checker_plugin
+      - goal_checker_plugins
+      - controller_plugins
+      - use_realtime_priority
+      - path_handler_plugin
+
+forbidden:
+  sm_search_window:
+    reason: slam_toolbox has no parameter with this name
+    instead: correlation_search_space_dimension or another documented parameter
+  loop_search_minimum_distance:
+    reason: slam_toolbox uses loop_search_maximum_distance
+    instead: loop_search_maximum_distance
+  correlation_search_space_sm_deviation:
+    reason: truncated name
+    instead: correlation_search_space_smear_deviation

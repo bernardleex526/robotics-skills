@@ -1,0 +1,79 @@
+schema_version: "1.0"
+
+policy:
+  id: "replace-me"
+  checkpoint_sha256: "replace-with-64-hex-digest"
+  model:
+    format: "onnx"
+    opset: "replace-me"
+    sha256: "replace-with-64-hex-digest"
+  exporter_version: "replace-me"
+  runtime_versions:
+    inference_engine: "replace-me"
+    simulator: "replace-me"
+
+interface:
+  observation:
+    ordered_terms:
+      - name: "replace-me"
+        shape: [1]
+        dtype: "float32"
+        unit: "replace-me"
+        frame: "replace-me-or-none"
+        scale: 1.0
+        offset: 0.0
+        clip: [-1.0, 1.0]
+        missing_policy: "reject"
+    privileged_terms_excluded_from_actor: []
+  action:
+    ordered_terms:
+      - name: "replace-me"
+        shape: [1]
+        dtype: "float32"
+        unit: "replace-me"
+        frame: "replace-me-or-none"
+        scale: 1.0
+        offset: 0.0
+        clip: [-1.0, 1.0]
+        target_interface: "replace-me"
+
+normalization:
+  owner: "deployment-adapter"
+  method: "mean_std"
+  statistics_sha256: "replace-with-64-hex-digest"
+  epsilon: 1.0e-6
+
+temporal:
+  sensor_rate_hz: "replace-me"
+  policy_rate_hz: "replace-me"
+  control_rate_hz: "replace-me"
+  action_hold: "zero_order_hold"
+  max_observation_age_s: "replace-me"
+  history:
+    length: 1
+    order: "oldest_to_newest"
+    warmup: "reject_until_full"
+
+recurrent:
+  enabled: false
+  state: []
+  initial_state: "zeros"
+  reset_on:
+    - "episode_reset"
+    - "operator_takeover"
+    - "communication_loss"
+    - "fault"
+    - "mode_switch"
+
+reset:
+  clear_history: true
+  clear_recurrent_state: true
+  clear_last_action: true
+  initial_state_distribution_version: "replace-me"
+
+validation:
+  golden_vectors_sha256: "replace-with-64-hex-digest"
+  numeric_tolerance:
+    absolute: 1.0e-6
+    relative: 1.0e-5
+  safety_envelope_version: "replace-me"
