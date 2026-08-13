@@ -10,7 +10,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-benchmarking"
@@ -29,7 +29,7 @@ def finding(code: str, message: str) -> dict[str, str]:
 
 def load_manifest(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"benchmark manifest is not a file: {path}")
+        raise ValueError(f"benchmark manifest is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"manifest exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -167,7 +167,7 @@ def result_for(
             if not findings
             else "benchmark manifest failed admission"
         ),
-        inputs=[str(path)],
+        inputs=[portable_path(path)],
         metrics={
             "declared_repeats": {
                 "value": data.get("repeats"),
@@ -196,7 +196,7 @@ def main() -> int:
             skill=SKILL,
             check="benchmark_manifest",
             summary="benchmark manifest input is invalid",
-            inputs=[str(args.manifest)],
+            inputs=[portable_path(args.manifest)],
             findings=[finding("invalid_input", str(exc))],
             limitations=["No benchmark fields were validated."],
         )

@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 from validate_benchmark_manifest import (
     SKILL,
     finding,
@@ -92,7 +92,7 @@ def invalid_result(path: Path, code: str, message: str) -> dict[str, Any]:
         skill=SKILL,
         check="benchmark_execution",
         summary="benchmark execution input is invalid",
-        inputs=[str(path)],
+        inputs=[portable_path(path)],
         findings=[finding(code, message)],
         limitations=["No benchmark run was started."],
     )
@@ -113,7 +113,7 @@ def main() -> int:
             skill=SKILL,
             check="benchmark_execution",
             summary="benchmark manifest failed admission",
-            inputs=[str(args.manifest)],
+            inputs=[portable_path(args.manifest)],
             findings=findings,
             limitations=["No benchmark run was started."],
         )
@@ -124,7 +124,7 @@ def main() -> int:
             skill=SKILL,
             check="benchmark_execution",
             summary="benchmark validated; execution requires --execute",
-            inputs=[str(args.manifest)],
+            inputs=[portable_path(args.manifest)],
             requested_status="skip",
             limitations=["The benchmark command was deliberately not executed."],
         )
@@ -139,7 +139,7 @@ def main() -> int:
             invalid_result(
                 args.manifest,
                 "output_directory_not_empty",
-                f"refusing nonempty output directory: {output_dir}",
+                f"refusing nonempty output directory: {portable_path(output_dir)}",
             ),
             args.output,
         )
@@ -154,7 +154,7 @@ def main() -> int:
             invalid_result(
                 args.manifest,
                 "working_directory",
-                f"working directory is not a directory: {working}",
+                f"working directory is not a directory: {portable_path(working)}",
             ),
             args.output,
         )
@@ -206,7 +206,7 @@ def main() -> int:
             if not failures
             else "one or more benchmark runs failed"
         ),
-        inputs=[str(args.manifest)],
+        inputs=[portable_path(args.manifest)],
         metrics={
             "total_runs": {
                 "value": len(records),
@@ -225,7 +225,7 @@ def main() -> int:
             },
         },
         findings=execution_findings,
-        evidence=[str(output_dir)],
+        evidence=[portable_path(output_dir)],
         limitations=[
             "Execution success does not establish scientific or hardware validity."
         ],

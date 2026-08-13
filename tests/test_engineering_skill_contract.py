@@ -4,6 +4,7 @@ import hashlib
 import importlib.util
 import json
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -128,7 +129,7 @@ class EngineeringSkillContractTests(unittest.TestCase):
                 ):
                     fixture = REPO / skill / case[f"{kind}_fixture"]
                     completed = subprocess.run(
-                        ["python3", str(script), str(fixture)],
+                        [sys.executable, str(script), str(fixture)],
                         cwd=REPO,
                         capture_output=True,
                         text=True,
@@ -144,6 +145,11 @@ class EngineeringSkillContractTests(unittest.TestCase):
                     self.assertEqual(set(payload), required, (skill, case, kind))
                     self.assertEqual(payload["schema_version"], "1.0.0")
                     self.assertEqual(payload["skill"], skill)
+                    for item in [*payload["inputs"], *payload["evidence"]]:
+                        if isinstance(item, str):
+                            self.assertNotIn(
+                                "\\", item, (skill, case["script"], kind, item)
+                            )
                     self.assertIn(
                         payload["status"], {"pass", "warn", "fail", "skip"}
                     )
@@ -207,6 +213,17 @@ class EngineeringSkillContractTests(unittest.TestCase):
         )
         self.assertEqual(result["status"], "skip")
         self.assertEqual(module.exit_code(result), 0)
+
+    def test_portable_path_renders_stable_posix_strings(self) -> None:
+        module = load_result_contract("robotics-vision-perception")
+        self.assertEqual(
+            module.portable_path(Path("a") / "b" / "c.json"), "a/b/c.json"
+        )
+        rendered = module.portable_path(REPO / "assets/fixtures" / "x.json")
+        self.assertNotIn("\\", rendered)
+        self.assertTrue(rendered.endswith("assets/fixtures/x.json"))
+        if Path(__file__).drive:
+            self.assertTrue(rendered[1:].startswith(":"))
 
 
 if __name__ == "__main__":

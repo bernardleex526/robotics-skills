@@ -2,9 +2,12 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
+
+import yaml
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -17,7 +20,7 @@ AGGREGATOR = ROOT / "scripts/aggregate_results.py"
 
 def run(script: Path, *args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(script), *args],
+        [sys.executable, str(script), *args],
         cwd=REPO,
         capture_output=True,
         text=True,
@@ -45,10 +48,20 @@ class BenchmarkingTests(unittest.TestCase):
 
     def test_harmless_benchmark_executes_without_shell(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
+            # The fixture documents a POSIX interpreter name; rewrite it to the
+            # current interpreter so the runner can execute it cross-platform.
+            manifest = yaml.safe_load(
+                (FIXTURES / "benchmark_echo.yaml").read_text(encoding="utf-8")
+            )
+            manifest["command"][0] = sys.executable
+            manifest_path = Path(temporary) / "benchmark_echo.yaml"
+            manifest_path.write_text(
+                yaml.safe_dump(manifest, sort_keys=True), encoding="utf-8"
+            )
             output_dir = Path(temporary) / "fresh"
             result = run(
                 RUNNER,
-                str(FIXTURES / "benchmark_echo.yaml"),
+                str(manifest_path),
                 "--execute",
                 "--output-dir",
                 str(output_dir),

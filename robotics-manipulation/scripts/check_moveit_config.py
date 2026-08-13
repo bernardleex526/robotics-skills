@@ -14,7 +14,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-manipulation"
@@ -35,28 +35,28 @@ def fail(code: str, message: str) -> dict[str, str]:
 
 def load_text(path: Path) -> str:
     if not path.is_file():
-        raise ValueError(f"required file is missing: {path}")
+        raise ValueError(f"required file is missing: {portable_path(path)}")
     if path.stat().st_size > MAX_FILE_BYTES:
-        raise ValueError(f"required file exceeds {MAX_FILE_BYTES} bytes: {path}")
+        raise ValueError(f"required file exceeds {MAX_FILE_BYTES} bytes: {portable_path(path)}")
     try:
         return path.read_text(encoding="utf-8")
     except (OSError, UnicodeError) as exc:
-        raise ValueError(f"cannot read {path}: {exc}") from exc
+        raise ValueError(f"cannot read {portable_path(path)}: {exc}") from exc
 
 
 def load_yaml(path: Path) -> dict[str, Any]:
     try:
         data = yaml.safe_load(load_text(path))
     except yaml.YAMLError as exc:
-        raise ValueError(f"cannot parse YAML {path}: {exc}") from exc
+        raise ValueError(f"cannot parse YAML {portable_path(path)}: {exc}") from exc
     if not isinstance(data, dict):
-        raise ValueError(f"YAML root must be a mapping: {path}")
+        raise ValueError(f"YAML root must be a mapping: {portable_path(path)}")
     return data
 
 
 def resolve_snapshot(directory: Path) -> dict[str, Path]:
     if not directory.is_dir():
-        raise ValueError(f"snapshot is not a directory: {directory}")
+        raise ValueError(f"snapshot is not a directory: {portable_path(directory)}")
     manifest = load_yaml(directory / "manifest.yaml")
     missing = REQUIRED_KEYS - set(manifest)
     if missing:
@@ -77,7 +77,7 @@ def parse_xml(path: Path) -> ET.Element:
     try:
         return ET.fromstring(load_text(path))
     except ET.ParseError as exc:
-        raise ValueError(f"cannot parse XML {path}: {exc}") from exc
+        raise ValueError(f"cannot parse XML {portable_path(path)}: {exc}") from exc
 
 
 def urdf_model(root: ET.Element) -> dict[str, Any]:
@@ -394,7 +394,7 @@ def main() -> int:
             skill=SKILL,
             check="moveit_config",
             summary="MoveIt snapshot input is invalid",
-            inputs=[str(args.snapshot)],
+            inputs=[portable_path(args.snapshot)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No complete MoveIt cross-file check was performed."],
         )
@@ -419,7 +419,7 @@ def main() -> int:
             if not findings
             else "MoveIt configuration failed admission"
         ),
-        inputs=[str(args.snapshot)],
+        inputs=[portable_path(args.snapshot)],
         environment=environment,
         metrics={
             "link_count": {

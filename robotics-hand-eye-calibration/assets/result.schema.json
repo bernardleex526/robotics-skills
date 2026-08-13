@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/bernardleex526-png/robotics-skills/blob/main/tools/result.schema.json",
+  "$id": "https://github.com/bernardleex526/robotics-skills/blob/main/tools/result.schema.json",
   "title": "Robotics engineering skill result",
   "type": "object",
   "additionalProperties": false,

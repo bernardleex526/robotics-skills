@@ -83,15 +83,16 @@ def extract_tokens(text: str) -> list[tuple[int, str]]:
 
 
 def display_name(path: Path, display_root: Path | None) -> str:
+    """Return a stable POSIX-style display path across platforms."""
     if display_root is not None:
         try:
-            return str(path.resolve().relative_to(display_root.resolve()))
+            return path.resolve().relative_to(display_root.resolve()).as_posix()
         except ValueError:
             pass
     try:
-        return str(path.resolve().relative_to(REPO))
+        return path.resolve().relative_to(REPO).as_posix()
     except ValueError:
-        return str(path)
+        return path.resolve().as_posix()
 
 
 def check_file(

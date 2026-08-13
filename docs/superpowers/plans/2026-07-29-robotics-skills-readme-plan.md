@@ -104,7 +104,7 @@ force, WBC, reproduction, and benchmarking.
 Add `## 快速开始` with:
 
 ```bash
-git clone https://github.com/bernardleex526-png/robotics-skills.git
+git clone https://github.com/bernardleex526/robotics-skills.git
 cd robotics-skills
 mkdir -p ~/.agents/skills
 cp -R robotics-vision-perception ~/.agents/skills/

@@ -51,7 +51,7 @@
 ### 1. 获取仓库
 
 ```bash
-git clone https://github.com/bernardleex526-png/robotics-skills.git
+git clone https://github.com/bernardleex526/robotics-skills.git
 cd robotics-skills
 ```
 
@@ -847,10 +847,12 @@ for entry in robotics-*/SKILL.md; do agentskills validate "$(dirname "$entry")";
 
 各命令的职责：
 
-- `unittest discover`：运行技能契约、正反例、算法小逻辑和仓库质量测试；
+- `unittest discover`：运行技能契约、正反例、算法小逻辑和仓库质量测试；其中
+  `test_engineering_skill_contract` 用当前解释器（`sys.executable`）实际执行 manifest
+  声明的十三个脚本的全部有效/无效夹具路径，并按 Draft 2020-12 schema 校验公共结果；
 - `check_repository.py`：检查准确的十四技能集合、结构、链接、许可证和已知错误模式；
-- `check_engineering_skills.py`：执行 manifest 中十三个脚本的有效/无效路径，并验证
-  schema/helper 一致性和无跨技能运行依赖；
+- `check_engineering_skills.py`：只做静态校验，不执行技能脚本——验证 manifest 声明、
+  必需文件、schema/helper 字节一致性，以及运行时无跨技能路径依赖；
 - `check_doc_params.py`：把版本敏感参数与带日期、带发行版的维护快照比较；
 - `compileall`：发现 Python 语法和导入阶段错误；
 - `git diff --check`：发现空白和 patch 格式问题；

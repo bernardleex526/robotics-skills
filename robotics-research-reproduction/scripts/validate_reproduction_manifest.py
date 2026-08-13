@@ -11,7 +11,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-research-reproduction"
@@ -191,7 +191,7 @@ def validate(data: dict[str, Any]) -> list[dict[str, str]]:
 
 def load(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"required manifest is not a file: {path}")
+        raise ValueError(f"required manifest is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"manifest exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -219,7 +219,7 @@ def main() -> int:
             skill=SKILL,
             check="reproduction_manifest",
             summary="manifest input is invalid",
-            inputs=[str(args.manifest)],
+            inputs=[portable_path(args.manifest)],
             findings=[finding("invalid_input", str(exc))],
             limitations=["No experiment fields were validated."],
         )
@@ -235,7 +235,7 @@ def main() -> int:
             if not findings
             else "reproduction manifest failed admission"
         ),
-        inputs=[str(args.manifest)],
+        inputs=[portable_path(args.manifest)],
         metrics={
             "dataset_count": {
                 "value": len(data.get("datasets", [])),

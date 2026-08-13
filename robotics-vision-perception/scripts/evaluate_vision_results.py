@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-vision-perception"
@@ -50,7 +50,7 @@ def iou(left: list[float], right: list[float]) -> float:
 
 def load(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"detection record is not a file: {path}")
+        raise ValueError(f"detection record is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"record exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -182,7 +182,7 @@ def main() -> int:
             skill=SKILL,
             check="vision_2d_evaluation",
             summary="detection record input is invalid",
-            inputs=[str(args.record)],
+            inputs=[portable_path(args.record)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No detections were evaluated."],
         )
@@ -211,7 +211,7 @@ def main() -> int:
             if not findings
             else "2D detection record failed admission"
         ),
-        inputs=[str(args.record)],
+        inputs=[portable_path(args.record)],
         metrics=metrics,
         findings=findings,
         limitations=[

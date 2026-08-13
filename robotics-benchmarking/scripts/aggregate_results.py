@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-benchmarking"
@@ -183,7 +183,7 @@ def main() -> int:
             skill=SKILL,
             check="benchmark_aggregation",
             summary="benchmark records are invalid",
-            inputs=[str(args.result_directory)],
+            inputs=[portable_path(args.result_directory)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No aggregate statistics were computed."],
         )
@@ -200,10 +200,10 @@ def main() -> int:
             if not findings
             else "benchmark regression threshold failed"
         ),
-        inputs=[str(args.result_directory)],
+        inputs=[portable_path(args.result_directory)],
         metrics=metrics,
         findings=findings,
-        evidence=[str(args.result_directory)],
+        evidence=[portable_path(args.result_directory)],
         limitations=[
             "Statistics describe bundled records and do not establish sample independence."
         ],

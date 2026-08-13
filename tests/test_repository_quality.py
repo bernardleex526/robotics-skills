@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import re
 import unittest
 from pathlib import Path
@@ -660,6 +661,33 @@ class RepositoryQualityTests(unittest.TestCase):
         self.assertIn("git diff --check", workflow)
         self.assertIn("不包含 Codex/Claude 插件 manifest", readme)
         self.assertIn("<skill-root>", infra)
+
+    def test_repository_owner_identifier_is_canonical(self) -> None:
+        owner = "bernardleex526"
+        schema = json.loads(
+            (REPO / "tools/result.schema.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            schema["$id"],
+            f"https://github.com/{owner}/robotics-skills/"
+            "blob/main/tools/result.schema.json",
+        )
+        readme = (REPO / "README.md").read_text(encoding="utf-8")
+        self.assertIn(
+            f"https://github.com/{owner}/robotics-skills.git", readme
+        )
+        sources = [
+            path
+            for pattern in ("**/*.json", "**/*.md", "**/*.py")
+            for path in REPO.glob(pattern)
+        ]
+        self.assertTrue(sources)
+        for path in sources:
+            self.assertNotIn(
+                f"{owner}-png",
+                path.read_text(encoding="utf-8"),
+                str(path),
+            )
 
 
 if __name__ == "__main__":

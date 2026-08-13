@@ -140,16 +140,16 @@ def check(repo: Path = REPO, manifest_path: Path = MANIFEST) -> list[str]:
                 for forbidden in FORBIDDEN_RUNTIME:
                     if forbidden in text:
                         problems.append(
-                            f"{path.relative_to(repo)}: forbidden runtime path "
-                            f"{forbidden!r}"
+                            f"{path.relative_to(repo).as_posix()}: "
+                            f"forbidden runtime path {forbidden!r}"
                         )
                 foreign = {
                     name for name in CROSS_SKILL.findall(text) if name != skill
                 }
                 if foreign:
                     problems.append(
-                        f"{path.relative_to(repo)}: cross-skill reference "
-                        f"{sorted(foreign)}"
+                        f"{path.relative_to(repo).as_posix()}: "
+                        f"cross-skill reference {sorted(foreign)}"
                     )
     return problems
 

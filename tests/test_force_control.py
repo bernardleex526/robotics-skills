@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -15,7 +16,7 @@ CHECK = ROOT / "scripts/check_force_config.py"
 
 def run(script: Path, fixture: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(script), str(FIXTURES / fixture)],
+        [sys.executable, str(script), str(FIXTURES / fixture)],
         cwd=REPO,
         capture_output=True,
         text=True,

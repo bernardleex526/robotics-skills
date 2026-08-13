@@ -11,7 +11,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-force-control"
@@ -60,7 +60,7 @@ def positive_number(value: Any) -> bool:
 
 def load(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"force configuration is not a file: {path}")
+        raise ValueError(f"force configuration is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"configuration exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -200,7 +200,7 @@ def main() -> int:
             skill=SKILL,
             check="force_config",
             summary="force configuration input is invalid",
-            inputs=[str(args.config)],
+            inputs=[portable_path(args.config)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No force-control configuration check was performed."],
         )
@@ -215,7 +215,7 @@ def main() -> int:
             if not findings
             else "force-control configuration failed admission"
         ),
-        inputs=[str(args.config)],
+        inputs=[portable_path(args.config)],
         environment={"baseline": "ROS 2 Humble"},
         metrics={
             "selected_axis_count": {

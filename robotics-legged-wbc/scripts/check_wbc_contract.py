@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-legged-wbc"
@@ -59,7 +59,7 @@ def positive_array(value: Any, length: int) -> bool:
 
 def load_yaml(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"WBC contract is not a file: {path}")
+        raise ValueError(f"WBC contract is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"contract exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -80,7 +80,7 @@ def resolve_urdf(contract_path: Path, data: dict[str, Any]) -> Path:
         raise ValueError("urdf must be a safe relative path")
     path = contract_path.parent / relative
     if not path.is_file():
-        raise ValueError(f"URDF is not a file: {path}")
+        raise ValueError(f"URDF is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"URDF exceeds {MAX_INPUT_BYTES} bytes")
     return path
@@ -407,7 +407,7 @@ def main() -> int:
             skill=SKILL,
             check="wbc_contract",
             summary="WBC contract input is invalid",
-            inputs=[str(args.contract)],
+            inputs=[portable_path(args.contract)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No complete WBC model check was performed."],
         )
@@ -435,7 +435,7 @@ def main() -> int:
             if not findings
             else "WBC contract failed admission"
         ),
-        inputs=[str(args.contract)],
+        inputs=[portable_path(args.contract)],
         environment=environment,
         metrics={
             "actuated_joint_count": {

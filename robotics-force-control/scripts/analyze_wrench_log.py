@@ -12,7 +12,7 @@ from typing import Any
 
 import yaml
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-force-control"
@@ -41,7 +41,7 @@ def finite_array(value: Any, positive: bool = False) -> bool:
 
 def load_manifest(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"wrench manifest is not a file: {path}")
+        raise ValueError(f"wrench manifest is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_MANIFEST_BYTES:
         raise ValueError(f"manifest exceeds {MAX_MANIFEST_BYTES} bytes")
     try:
@@ -109,7 +109,7 @@ def read_csv(
         raise ValueError("csv must be a safe relative path")
     path = manifest_path.parent / relative
     if not path.is_file():
-        raise ValueError(f"wrench CSV is not a file: {path}")
+        raise ValueError(f"wrench CSV is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_CSV_BYTES:
         raise ValueError(f"CSV exceeds {MAX_CSV_BYTES} bytes")
     columns = data["columns"]
@@ -230,7 +230,7 @@ def main() -> int:
             skill=SKILL,
             check="wrench_log",
             summary="wrench log input is invalid",
-            inputs=[str(args.manifest)],
+            inputs=[portable_path(args.manifest)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No complete wrench analysis was performed."],
         )
@@ -267,7 +267,7 @@ def main() -> int:
             if not findings
             else "wrench log failed declared gates"
         ),
-        inputs=[str(args.manifest)],
+        inputs=[portable_path(args.manifest)],
         environment={"frame_id": data.get("frame_id")},
         metrics=metric_results,
         findings=findings,

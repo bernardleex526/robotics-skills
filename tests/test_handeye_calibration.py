@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -14,7 +15,7 @@ SCRIPT = ROOT / "scripts/validate_handeye.py"
 
 def run_fixture(name: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(SCRIPT), str(FIXTURES / name)],
+        [sys.executable, str(SCRIPT), str(FIXTURES / name)],
         cwd=REPO,
         capture_output=True,
         text=True,

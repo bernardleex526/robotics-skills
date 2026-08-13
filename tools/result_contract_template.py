@@ -81,6 +81,16 @@ def make_result(
     }
 
 
+def portable_path(value: str | Path) -> str:
+    """Render a filesystem path as a stable POSIX-style string.
+
+    Structured payload fields (``inputs``, ``evidence``) and user-facing
+    messages must not leak platform-native separators, so Windows runs emit
+    forward-slash paths identical to POSIX runs.
+    """
+    return Path(value).as_posix()
+
+
 def exit_code(result: Mapping[str, Any]) -> int:
     """Map a completed result to the repository CLI exit contract."""
     return 1 if result.get("status") == "fail" else 0

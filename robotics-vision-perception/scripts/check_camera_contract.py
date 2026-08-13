@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from result_contract import emit_result, make_result
+from result_contract import emit_result, make_result, portable_path
 
 
 SKILL = "robotics-vision-perception"
@@ -55,7 +55,7 @@ def finite_vector(value: Any, length: int | None = None) -> bool:
 
 def load(path: Path) -> dict[str, Any]:
     if not path.is_file():
-        raise ValueError(f"camera snapshot is not a file: {path}")
+        raise ValueError(f"camera snapshot is not a file: {portable_path(path)}")
     if path.stat().st_size > MAX_INPUT_BYTES:
         raise ValueError(f"snapshot exceeds {MAX_INPUT_BYTES} bytes")
     try:
@@ -218,7 +218,7 @@ def main() -> int:
             skill=SKILL,
             check="camera_contract",
             summary="camera snapshot input is invalid",
-            inputs=[str(args.snapshot)],
+            inputs=[portable_path(args.snapshot)],
             findings=[fail("invalid_input", str(exc))],
             limitations=["No Image or CameraInfo fields were validated."],
         )
@@ -234,7 +234,7 @@ def main() -> int:
             if not findings
             else "camera contract failed admission"
         ),
-        inputs=[str(args.snapshot)],
+        inputs=[portable_path(args.snapshot)],
         metrics={
             "maximum_pairing_skew_ms": {
                 "value": max(skew) if isinstance(skew, list) and skew else None,

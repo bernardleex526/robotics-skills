@@ -10,12 +10,12 @@ Branch: `feat/engineering-skills-expansion`
 
 | Gate | Result |
 |---|---|
-| `python3 -m unittest discover -s tests -v` | PASS, 102 tests |
+| `python3 -m unittest discover -s tests -v` | PASS, 105 tests |
 | Manifest-declared script cases | PASS, 13 scripts × valid/invalid = 26 executions |
 | Draft 2020-12 common-result validation | PASS for all 26 executions |
 | `python3 tools/check_repository.py` | PASS, exact 14-skill set |
 | `python3 tools/check_engineering_skills.py` | PASS, 8 engineering skills |
-| `python3 tools/check_doc_params.py` | PASS, 51 Markdown files / 7 version snapshots |
+| `python3 tools/check_doc_params.py` | PASS, 55 Markdown files / 7 version snapshots |
 | `python3 tools/check_doc_params.py --selftest` | PASS, 10 cases |
 | `python3 -m compileall -q robotics-*/scripts tools tests` | PASS |
 | `git diff --check` | PASS |

@@ -236,23 +236,23 @@ def check() -> list[str]:
         try:
             metadata = frontmatter(entry)
         except ValueError as exc:
-            problems.append(f"{entry.relative_to(REPO)}: {exc}")
+            problems.append(f"{entry.relative_to(REPO).as_posix()}: {exc}")
             continue
         if metadata.get("name") != skill:
-            problems.append(f"{entry.relative_to(REPO)}: name must match directory")
+            problems.append(f"{entry.relative_to(REPO).as_posix()}: name must match directory")
         description = metadata.get("description")
         if not isinstance(description, str) or not 40 <= len(description) <= 1024:
             problems.append(
-                f"{entry.relative_to(REPO)}: description must be 40..1024 characters"
+                f"{entry.relative_to(REPO).as_posix()}: description must be 40..1024 characters"
             )
         extra = set(metadata) - FRONTMATTER_KEYS
         if extra:
             problems.append(
-                f"{entry.relative_to(REPO)}: non-portable frontmatter keys {sorted(extra)}"
+                f"{entry.relative_to(REPO).as_posix()}: non-portable frontmatter keys {sorted(extra)}"
             )
         if metadata.get("license") != "LICENSE.txt":
             problems.append(
-                f"{entry.relative_to(REPO)}: license must be LICENSE.txt"
+                f"{entry.relative_to(REPO).as_posix()}: license must be LICENSE.txt"
             )
         skill_license = root / "LICENSE.txt"
         if not skill_license.is_file():
@@ -267,7 +267,7 @@ def check() -> list[str]:
             for resource in LOCAL_RESOURCE.findall(text):
                 if not (root / resource).is_file():
                     problems.append(
-                        f"{path.relative_to(REPO)}: missing local resource {resource}"
+                        f"{path.relative_to(REPO).as_posix()}: missing local resource {resource}"
                     )
 
     for path in markdown:
@@ -278,15 +278,15 @@ def check() -> list[str]:
             relative = target.split("#", 1)[0]
             if relative and not (path.parent / relative).exists():
                 problems.append(
-                    f"{path.relative_to(REPO)}: missing relative link {target}"
+                    f"{path.relative_to(REPO).as_posix()}: missing relative link {target}"
                 )
         for bad, reason in KNOWN_BAD.items():
             if bad in text:
-                problems.append(f"{path.relative_to(REPO)}: {bad!r}: {reason}")
+                problems.append(f"{path.relative_to(REPO).as_posix()}: {bad!r}: {reason}")
         for line_number, line in enumerate(text.splitlines(), start=1):
             for match in ROS2_SHORT_TYPE.finditer(line):
                 problems.append(
-                    f"{path.relative_to(REPO)}:{line_number}: "
+                    f"{path.relative_to(REPO).as_posix()}:{line_number}: "
                     f"non-canonical ROS 2 type {match.group(0)}"
                 )
         lines = text.splitlines()
@@ -297,7 +297,7 @@ def check() -> list[str]:
         ]
         if len(fence_lines) % 2:
             problems.append(
-                f"{path.relative_to(REPO)}: unbalanced code fences {fence_lines}"
+                f"{path.relative_to(REPO).as_posix()}: unbalanced code fences {fence_lines}"
             )
         index = 0
         while index < len(lines):
@@ -311,7 +311,7 @@ def check() -> list[str]:
                 index += 1
             if len(counts) >= 2 and len(set(counts)) != 1:
                 problems.append(
-                    f"{path.relative_to(REPO)}:{start + 1}: "
+                    f"{path.relative_to(REPO).as_posix()}:{start + 1}: "
                     f"inconsistent table pipe counts {counts}"
                 )
 
