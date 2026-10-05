@@ -1,0 +1,60 @@
+{
+  "checked_at_utc": "2026-10-05T12:37:50.845610+00:00",
+  "platform": "Windows-11-10.0.22631-SP0",
+  "python": "3.13.14 (tags/v3.13.14:fd17997, Jun 10 2026, 13:03:48) [MSC v.1944 64 bit (AMD64)]",
+  "results": [
+    {
+      "check": "unit_tests",
+      "exit_code": 0,
+      "stdout": "............................................................... [ 43%]\n.............s............................ [ 72%]\n.......................................                                  [100%]\n143 passed, 1 skipped, 39 subtests passed in 24.67s\n",
+      "stderr": ""
+    },
+    {
+      "check": "repository",
+      "exit_code": 0,
+      "stdout": "repository quality check passed (24 skills)\n",
+      "stderr": ""
+    },
+    {
+      "check": "engineering",
+      "exit_code": 0,
+      "stdout": "engineering skill check passed (8 skills)\n",
+      "stderr": ""
+    },
+    {
+      "check": "parameters",
+      "exit_code": 0,
+      "stdout": "checked 93 markdown files against 7 version-scoped snapshots\n",
+      "stderr": ""
+    },
+    {
+      "check": "portability",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"pass\",\n  \"skills\": 24,\n  \"installer_targets\": 8,\n  \"discovery_description_characters\": 5576,\n  \"limitations\": [\n    \"Description characters are not token measurements.\",\n    \"Native client discovery and behavioral routing require client tests.\"\n  ],\n  \"findings\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "check": "compile",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "diff_whitespace",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "agent_skills_specification",
+      "skills": 24,
+      "findings": {},
+      "exit_code": 0
+    }
+  ],
+  "limits": [
+    "Not native-client end-to-end testing.",
+    "No robot/ROS/GPU runtime or safety certification.",
+    "Symlink creation test may be skipped on Windows without privilege; path traversal and no-overwrite tests still run."
+  ]
+}

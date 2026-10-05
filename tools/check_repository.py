@@ -14,6 +14,17 @@ from check_engineering_skills import check as check_engineering_skills
 
 REPO = Path(__file__).resolve().parents[1]
 EXPECTED_SKILLS = {
+    "robotics-lidar-odometry",
+    "robotics-visual-slam",
+    "robotics-map-management",
+    "robotics-localization-fusion",
+    "robotics-calibration-sync",
+    "robotics-vln",
+    "robotics-target-following",
+    "robotics-data-replay",
+    "robotics-edge-deployment",
+    "robotics-research-discovery",
+
     "robotics-3d-perception",
     "robotics-benchmarking",
     "robotics-force-control",
@@ -235,7 +246,7 @@ def check() -> list[str]:
             continue
         try:
             metadata = frontmatter(entry)
-        except ValueError as exc:
+        except (ValueError, yaml.YAMLError) as exc:
             problems.append(f"{entry.relative_to(REPO).as_posix()}: {exc}")
             continue
         if metadata.get("name") != skill:

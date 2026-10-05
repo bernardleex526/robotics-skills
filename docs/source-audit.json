@@ -1,0 +1,513 @@
+{
+  "checked_at_utc": "2026-10-05T12:06:25.886244+00:00",
+  "sources": [
+    {
+      "url": "https://agentskills.io/specification",
+      "status": 200,
+      "resolved_url": "https://agentskills.io/specification",
+      "title": "Specification - Agent Skills",
+      "detected_terms": [
+        "SKILL.md",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "82d348e8e9c1b61e28034d7bf8ca6561532abf055d2a8bc97b306f1c15531644",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://antigravity.google/docs/skills",
+      "status": 200,
+      "resolved_url": "https://antigravity.google/docs/skills",
+      "title": "Agent skills | Google Antigravity Docs",
+      "detected_terms": [
+        ".agents/skills",
+        "SKILL.md"
+      ],
+      "sha256_of_fetched_prefix": "8f25bb02275a7beee7add15ae63807835275ad12017dad6c0147d935f9798605",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://ceres-solver.org/nnls_tutorial.html",
+      "status": "unverified",
+      "error": "<urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)>"
+    },
+    {
+      "url": "https://code.claude.com/docs/en/skills",
+      "status": 200,
+      "resolved_url": "https://code.claude.com/docs/en/skills",
+      "title": "Extend Claude with skills - Claude Code Docs",
+      "detected_terms": [
+        ".claude/skills",
+        "SKILL.md",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "78460a108f7ad4f09ceea6a280f2e1da1e21dd55f08ae465acc1080feaf0d84b",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://control.ros.org/humble/doc/ros2_control/controller_manager/doc/userdoc.html",
+      "status": 200,
+      "resolved_url": "https://control.ros.org/humble/doc/ros2_control/controller_manager/doc/userdoc.html",
+      "title": "Controller Manager &mdash; ROS2_Control: Humble Oct 2026 documentation",
+      "detected_terms": [
+        "Humble"
+      ],
+      "sha256_of_fetched_prefix": "754fcf3effc7579585061091bda88b84589be89143ef0606a3e76c6ed07b3585",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://control.ros.org/humble/doc/ros2_controllers/admittance_controller/doc/userdoc.html",
+      "status": 200,
+      "resolved_url": "https://control.ros.org/humble/doc/ros2_controllers/admittance_controller/doc/userdoc.html",
+      "title": "Admittance Controller &mdash; ROS2_Control: Humble Oct 2026 documentation",
+      "detected_terms": [
+        "Humble"
+      ],
+      "sha256_of_fetched_prefix": "e84b747d2aeb2744f1c56cac5d4d04a7388a6a507eaf427724e8dae2ce1da5d4",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://cursor.com/docs/context/skills",
+      "status": 200,
+      "resolved_url": "https://cursor.com/docs/skills",
+      "title": "Agent Skills | Cursor Docs",
+      "detected_terms": [
+        ".agents/skills",
+        ".claude/skills",
+        ".cursor/skills",
+        "SKILL.md"
+      ],
+      "sha256_of_fetched_prefix": "8a786c6603904dabe0ab400d15e9514734968066226c588e6c002492ac054321",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://developers.openai.com/codex/skills/",
+      "status": 200,
+      "resolved_url": "https://learn.chatgpt.com/docs/build-skills",
+      "title": "Build skills | ChatGPT Learn",
+      "detected_terms": [
+        ".agents/skills",
+        "SKILL.md"
+      ],
+      "sha256_of_fetched_prefix": "6ed01f61cd7481a1461e442fec15bf4a9aacfaef4493ab56c1586ac2ce9e15a7",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.github.com/en/copilot/concepts/agents/about-agent-skills",
+      "status": 200,
+      "resolved_url": "https://docs.github.com/en/copilot/concepts/agents/about-agent-skills",
+      "title": "About agent skills - GitHub Docs",
+      "detected_terms": [
+        ".agents/skills",
+        ".claude/skills",
+        ".github/skills",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "a3dc0042452cb9d96547c8e73572cd9eaa595076aece592676334b222ea89534",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.github.com/en/rest/search/search",
+      "status": 200,
+      "resolved_url": "https://docs.github.com/en/rest/search/search",
+      "title": "REST API endpoints for search - GitHub Docs",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "1beb8934adbe49ba02383afec97f67b2400591007c3b19c91618bcd97c13bcf9",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.nav2.org/",
+      "status": 200,
+      "resolved_url": "https://docs.nav2.org/",
+      "title": "Redirecting",
+      "detected_terms": [],
+      "sha256_of_fetched_prefix": "78b4737d5ff15f02ca50545ef6c6c9f3aa71a45a249260f77682e8b1aa7c9ba3",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.nav2.org/configuration/packages/configuring-map-server.html",
+      "status": "unverified",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "status": 200,
+      "resolved_url": "https://docs.nvidia.com/deeplearning/tensorrt/latest/",
+      "title": "NVIDIA TensorRT Documentation &#8212; NVIDIA TensorRT",
+      "detected_terms": [],
+      "sha256_of_fetched_prefix": "d915086425c137087b86bd0472803666e2521e61a6499f73fb62cf2d14f5e8ce",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html",
+      "status": 200,
+      "resolved_url": "https://docs.opencv.org/4.13.0/d9/d0c/group__calib3d.html",
+      "title": "OpenCV: Camera Calibration and 3D Reconstruction",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "b5e1d26c45aa39f2d461e4f6dc137bb4f81c76620029819faefecc946ce1bbb7",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html",
+      "status": 200,
+      "resolved_url": "https://docs.ros.org/en/humble/Concepts/Intermediate/About-Quality-of-Service-Settings.html",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "d8ccc145766d3a6c2c407396ee3f797f46f88b366161ca412b8967e4770ba5f2",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.ros.org/en/humble/p/robot_localization/",
+      "status": 200,
+      "resolved_url": "https://docs.ros.org/en/humble/p/robot_localization/",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "be4b9da1adfa46e771646d577d91b4fae36ada330d20dd4bd5fad6b7239c448c",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.ros.org/en/humble/p/sensor_msgs/msg/CameraInfo.html",
+      "status": 200,
+      "resolved_url": "https://docs.ros.org/en/humble/p/sensor_msgs/msg/CameraInfo.html",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "9e12d94cf7244331625da62730af54e9f5d3fb5e68a2d45102678d1e590b601f",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://docs.ros.org/en/rolling/Tutorials/Demos/Real-Time-Programming.html",
+      "status": 200,
+      "resolved_url": "https://docs.ros.org/en/rolling/Tutorials/Demos/Real-Time-Programming.html",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "d83cac62d9a378212cbfc82822eb4da6433cfd21914943ca8711e06d619de93c",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/MichaelGrupp/evo",
+      "status": 200,
+      "resolved_url": "https://github.com/MichaelGrupp/evo",
+      "title": "GitHub - MichaelGrupp/evo: Python package for the evaluation of odometry and SLAM · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "c24c5d8ab5fedc66ba99c062e3b48d0ef16ffbb4917fda1c209e2e551325961f",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/RobotWebTools/rosbridge_suite",
+      "status": 200,
+      "resolved_url": "https://github.com/RobotWebTools/rosbridge_suite",
+      "title": "GitHub - RobotWebTools/rosbridge_suite: Server Implementations of the rosbridge v2 Protocol · GitHub",
+      "detected_terms": [
+        "Humble",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "d25c9ee53f39c837008d73ca1f3339d394fb9dba2ebff9fff513a0883a704092",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/SteveMacenski/slam_toolbox",
+      "status": 200,
+      "resolved_url": "https://github.com/SteveMacenski/slam_toolbox",
+      "title": "GitHub - SteveMacenski/slam_toolbox: Slam Toolbox for lifelong mapping and localization in potentially massive maps with ROS · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "864c1a93af2e5da58dceea65e8beb2a76fcac512ca9ae1dfeb793a1848374a92",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/TixiaoShan/LIO-SAM",
+      "status": 200,
+      "resolved_url": "https://github.com/TixiaoShan/LIO-SAM",
+      "title": "GitHub - TixiaoShan/LIO-SAM: LIO-SAM: Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "5c1e11f31978773feb65a0d17d8ef8fbd29aff9a6b11894f060c4eaf8145da17",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/UZ-SLAMLab/ORB_SLAM3",
+      "status": 200,
+      "resolved_url": "https://github.com/UZ-SLAMLab/ORB_SLAM3",
+      "title": "GitHub - UZ-SLAMLab/ORB_SLAM3: ORB-SLAM3: An Accurate Open-Source Library for Visual, Visual-Inertial and Multi-Map SLAM · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "b57af943d44a2656d5d534f615d79f2fddf60e02ca6b459a2fd859d3c5406384",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/allenai/ProcTHOR",
+      "status": 200,
+      "resolved_url": "https://github.com/allenai/ProcTHOR",
+      "title": "GitHub - allenai/procthor: 🏘️ Scaling Embodied AI by Procedurally Generating Interactive 3D Houses · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "11d64cea03bbaaaf9075739f365cfe40d08cc26f70bb8e0733618080a4ac8418",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/ethz-asl/kalibr",
+      "status": 200,
+      "resolved_url": "https://github.com/ethz-asl/kalibr",
+      "title": "GitHub - ethz-asl/kalibr: The Kalibr visual-inertial calibration toolbox · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "3a0c94ded4d02249994ff3a864c2c27e8bd599371b9de4d75c1c57ab81a37e09",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/facebookresearch/habitat-lab",
+      "status": 200,
+      "resolved_url": "https://github.com/facebookresearch/habitat-lab",
+      "title": "GitHub - facebookresearch/habitat-lab: A modular high-level library to train embodied AI agents across a variety of tasks and environments. · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "c7d88a361e09172788de826140d670f5228af8479f30150c30525edcaac27afd",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/hku-mars/FAST-LIVO2",
+      "status": 200,
+      "resolved_url": "https://github.com/hku-mars/FAST-LIVO2",
+      "title": "GitHub - hku-mars/FAST-LIVO2: FAST-LIVO2: Fast, Direct LiDAR-Inertial-Visual Odometry · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "db8573b586655924da67106b5e98a97e96e611aa1e74ac2444a1ce75c4204f99",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/hku-mars/FAST_LIO",
+      "status": 200,
+      "resolved_url": "https://github.com/hku-mars/FAST_LIO",
+      "title": "GitHub - hku-mars/FAST_LIO: A computationally efficient and robust LiDAR-inertial odometry (LIO) package · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "4cb9f6c13f1816d42fd728e9f678b9c27e59462066235e66b3732d9d84d9c691",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/hku-mars/LiDAR_IMU_Init",
+      "status": 200,
+      "resolved_url": "https://github.com/hku-mars/LiDAR_IMU_Init",
+      "title": "GitHub - hku-mars/LiDAR_IMU_Init: [IROS2022] Robust Real-time LiDAR-inertial Initialization Method. · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "91ac77fbd92a037f7d045942a7152367fbf61ca0da887509a6f9b3c54657bb04",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/hku-mars/r3live",
+      "status": 200,
+      "resolved_url": "https://github.com/hku-mars/r3live",
+      "title": "GitHub - hku-mars/r3live: A Robust, Real-time, RGB-colored, LiDAR-Inertial-Visual tightly-coupled state Estimation and mapping package · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "e89b2fa0db13959af7ae53d1802a594e99af96e9c845e80c7db999fd47361666",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/ifzhang/ByteTrack",
+      "status": 200,
+      "resolved_url": "https://github.com/FoundationVision/ByteTrack",
+      "title": "GitHub - FoundationVision/ByteTrack: [ECCV 2022] ByteTrack: Multi-Object Tracking by Associating Every Detection Box · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "17242bec873456abe1bfedf251acc16d93eb5312dfc98dece683260a5fe598ba",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/introlab/rtabmap",
+      "status": 200,
+      "resolved_url": "https://github.com/introlab/rtabmap",
+      "title": "GitHub - introlab/rtabmap: RTAB-Map library and standalone application · GitHub",
+      "detected_terms": [
+        "Humble",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "40fa5b85b3b17e7bc93dc003e24f240850b791d9e1dff296637cf5ad28c3c651",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/koide3/direct_visual_lidar_calibration",
+      "status": 200,
+      "resolved_url": "https://github.com/koide3/direct_visual_lidar_calibration",
+      "title": "GitHub - koide3/direct_visual_lidar_calibration: A toolbox for target-less LiDAR-camera calibration [ROS1/ROS2] · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "0e2c373eeacd51bb8a3941d27cc3d172f70730bfceeded7be99e19fa5042c814",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/nvidia-isaac/nvblox",
+      "status": 200,
+      "resolved_url": "https://github.com/nvidia-isaac/nvblox",
+      "title": "GitHub - nvidia-isaac/nvblox: A GPU-accelerated TSDF and ESDF library for robots equipped with RGB-D cameras. · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "5ab3923726e663d7462fc0188fd782232bcf2c2abeca88f2ca39e5e842b5cced",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/paperswithcode/releasing-research-code",
+      "status": 200,
+      "resolved_url": "https://github.com/paperswithcode/releasing-research-code",
+      "title": "GitHub - paperswithcode/releasing-research-code: Tips for releasing research code in Machine Learning (with official NeurIPS 2020 recommendations) · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "2aad84e1b6dca68144c3e95a14e6d29957d9cb20f33302902b8f0d0a991157f4",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/ros-navigation/navigation2",
+      "status": 200,
+      "resolved_url": "https://github.com/ros-navigation/navigation2",
+      "title": "GitHub - ros-navigation/navigation2: ROS 2 Navigation Framework and System · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "0b68821bedfbb2eec2d26d66a72f22b92af714a92e4be9d9d19567d1296cd20c",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/ros2/rosbag2",
+      "status": 200,
+      "resolved_url": "https://github.com/ros2/rosbag2",
+      "title": "GitHub - ros2/rosbag2 · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "9280914997b9ab7ace2efee39513895b9848f33052672835da43e1a4edd82acb",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://github.com/stack-of-tasks/tsid",
+      "status": 200,
+      "resolved_url": "https://github.com/stack-of-tasks/tsid",
+      "title": "GitHub - stack-of-tasks/tsid: Efficient Task Space Inverse Dynamics (TSID) based on Pinocchio · GitHub",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "e522f3715fe878859da2fca95284b0d89126cb71c226484600cdf586c4fee3d2",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://gtsam.org/tutorials/intro.html",
+      "status": 200,
+      "resolved_url": "https://gtsam.org/tutorials/intro.html",
+      "title": "Factor Graphs and GTSAM | GTSAM",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "fe2ead291d30b1ac61a6b2cfd95ef7c36fcbaf93265173f44503964bb80b4136",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://info.arxiv.org/help/api/user-manual.html",
+      "status": 200,
+      "resolved_url": "https://info.arxiv.org/help/api/user-manual.html",
+      "title": "arXiv API User's Manual - arXiv info",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "a4f8c339c191e35addd5a658114015f3a44000de89ec15ba633836a6c5db57b9",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://mcap.dev/spec",
+      "status": 200,
+      "resolved_url": "https://mcap.dev/spec",
+      "title": "MCAP Format Specification | MCAP",
+      "detected_terms": [],
+      "sha256_of_fetched_prefix": "2da3256dc9eabd4072ab019da3eae61b21b710e7b9bfa315fef50ff626095e07",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://moveit.picknik.ai/humble/doc/examples/planning_scene/planning_scene_tutorial.html",
+      "status": 200,
+      "resolved_url": "https://moveit.picknik.ai/humble/doc/examples/planning_scene/planning_scene_tutorial.html",
+      "title": "Planning Scene &mdash; MoveIt Documentation: Humble  documentation",
+      "detected_terms": [
+        "Humble"
+      ],
+      "sha256_of_fetched_prefix": "408a21b814cc0e5b466a57207ddb3e5db396a5734e75612cbef12c05d05dbe01",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://onnxruntime.ai/docs/performance/",
+      "status": 200,
+      "resolved_url": "https://onnxruntime.ai/docs/performance/",
+      "title": "Performance | onnxruntime",
+      "detected_terms": [],
+      "sha256_of_fetched_prefix": "cb7f6e7529c6f7c36eca574c19cfd107683c4c9c1c26bca110bcee6c57e8a361",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://opencode.ai/docs/skills/",
+      "status": 200,
+      "resolved_url": "https://opencode.ai/docs/skills/",
+      "title": "Agent Skills | OpenCode",
+      "detected_terms": [
+        ".agents/skills",
+        ".claude/skills",
+        ".opencode/skills",
+        "SKILL.md",
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "f39d4e33298d48b06a0fc4dfc6fa38d2ea051eb6f0831b104cf91a297469c91c",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://www.open3d.org/docs/release/tutorial/pipelines/registration_icp.html",
+      "status": "unverified",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://www.ros.org/reps/rep-0103.html",
+      "status": 200,
+      "resolved_url": "https://www.ros.org/reps/rep-0103.html",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "d2dcec736a255f26767b40bf694bc69bfb0b7c83f56d828a23f4f203ac02b400",
+      "scope": "URL/content availability only; not complete technical validation"
+    },
+    {
+      "url": "https://www.ros.org/reps/rep-0105.html",
+      "status": 200,
+      "resolved_url": "https://www.ros.org/reps/rep-0105.html",
+      "title": "Making sure you&#39;re not a bot!",
+      "detected_terms": [
+        "license"
+      ],
+      "sha256_of_fetched_prefix": "30af76409991e697070d2dff563f5c86f073d190681bdba6942216a3c387f6fe",
+      "scope": "URL/content availability only; not complete technical validation"
+    }
+  ]
+}

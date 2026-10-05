@@ -9,9 +9,13 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.10", "3.12"]
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +27,7 @@ jobs:
       - run: python tools/check_repository.py
       - run: python tools/check_engineering_skills.py
       - run: python tools/check_doc_params.py
+      - run: python tools/check_portability.py
       - run: python -m compileall -q robotics-*/scripts tools tests
       - name: Validate Agent Skills specification
         if: matrix.python-version == '3.12'

@@ -1,0 +1,105 @@
+{
+  "checked_at_utc": "2026-10-05T12:07:52.863383+00:00",
+  "cases": [
+    {
+      "query": "lidar inertial odometry",
+      "paper_sort": "updated",
+      "days": null,
+      "status": "ok",
+      "fetched_at": "2026-10-05T12:07:45.015976+00:00",
+      "request_urls": {
+        "arxiv": "https://export.arxiv.org/api/query?search_query=all%3A%22lidar%22+AND+all%3A%22inertial%22+AND+all%3A%22odometry%22&start=0&max_results=3&sortBy=lastUpdatedDate&sortOrder=descending",
+        "github": "https://api.github.com/search/repositories?q=%22lidar%22+%22inertial%22+%22odometry%22+archived%3Afalse&sort=updated&order=desc&per_page=3"
+      },
+      "sources": {
+        "arxiv": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "http://arxiv.org/abs/2609.29374v2",
+            "http://arxiv.org/abs/2609.30521v1",
+            "http://arxiv.org/abs/2609.25900v1"
+          ]
+        },
+        "github": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "https://github.com/y1s3ra150/lidar_inertial_odometry",
+            "https://github.com/formiat/px4-ros2-drone-nav",
+            "https://github.com/haiyang2022/Hybrid-VoxelMap"
+          ]
+        }
+      }
+    },
+    {
+      "query": "visual language navigation",
+      "paper_sort": "submitted",
+      "days": 365,
+      "status": "ok",
+      "fetched_at": "2026-10-05T12:07:48.754440+00:00",
+      "request_urls": {
+        "arxiv": "https://export.arxiv.org/api/query?search_query=all%3A%22visual%22+AND+all%3A%22language%22+AND+all%3A%22navigation%22+AND+submittedDate%3A%5B202510050000+TO+202610052359%5D&start=0&max_results=3&sortBy=submittedDate&sortOrder=descending",
+        "github": "https://api.github.com/search/repositories?q=%22visual%22+%22language%22+%22navigation%22+archived%3Afalse+pushed%3A%3E%3D2025-10-05&sort=updated&order=desc&per_page=3"
+      },
+      "sources": {
+        "arxiv": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "http://arxiv.org/abs/2610.03137v1",
+            "http://arxiv.org/abs/2610.00878v1",
+            "http://arxiv.org/abs/2609.40325v1"
+          ]
+        },
+        "github": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "https://github.com/UWMILab/LCVN",
+            "https://github.com/abuttan1979/VLN-YuanNav",
+            "https://github.com/ben-dev-au/fnd"
+          ]
+        }
+      }
+    },
+    {
+      "query": "person following robot",
+      "paper_sort": "submitted",
+      "days": null,
+      "status": "ok",
+      "fetched_at": "2026-10-05T12:07:50.654687+00:00",
+      "request_urls": {
+        "arxiv": "https://export.arxiv.org/api/query?search_query=all%3A%22person%22+AND+all%3A%22following%22+AND+all%3A%22robot%22&start=0&max_results=3&sortBy=submittedDate&sortOrder=descending",
+        "github": "https://api.github.com/search/repositories?q=%22person%22+%22following%22+%22robot%22+archived%3Afalse&sort=updated&order=desc&per_page=3"
+      },
+      "sources": {
+        "arxiv": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "http://arxiv.org/abs/2610.02398v1",
+            "http://arxiv.org/abs/2609.38709v1",
+            "http://arxiv.org/abs/2609.21942v1"
+          ]
+        },
+        "github": {
+          "status": "ok",
+          "count": 3,
+          "error": null,
+          "sample_urls": [
+            "https://github.com/ob-f/OpenBot",
+            "https://github.com/msritian/Robot-locomotion-social-navigation",
+            "https://github.com/vv162953-ops/Human-Following-Robot-"
+          ]
+        }
+      }
+    }
+  ],
+  "limitation": "API smoke only, not candidate endorsement or build verification."
+}

@@ -1,6 +1,6 @@
 ---
 name: robotics-slam
-description: SLAM（同步定位与建图）开发助手。当用户进行机器人建图、定位、导航前端的开发或调试时使用，涵盖激光/视觉/多传感器 SLAM 方案选型、传感器标定（内外参、时间同步）、slam_toolbox/Cartographer/LIO-SAM/ORB-SLAM3 等主流方案部署与调参、回环与地图优化、定位漂移排查。触发词示例：SLAM、建图、定位漂移、回环检测、激光 SLAM、视觉 SLAM、标定、slam_toolbox、Cartographer、LIO-SAM、map 与 odom 跳变。
+description: Select and diagnose robotic SLAM stacks, mapping drift, loop closure and map-to-odom integration. Use for explicit laser/visual/multisensor SLAM, not web maps, UI navigation or generic calibration.
 license: LICENSE.txt
 ---
 
@@ -25,7 +25,7 @@ Assist with SLAM development and debugging on ROS/ROS 2: choosing a SLAM approac
 | 场景 | 首选方案 |
 |---|---|
 | 2D 室内、单线激光、ROS 2 | `slam_toolbox`（在线建图+ lifelong 定位，Nav2 官方集成） |
-| 2D 室内、需要子图级优化 | Google Cartographer（调参复杂但效果好） |
+| 2D 室内、需要子图级优化 | Google Cartographer（需核验目标发行版移植、维护状态与同数据对照） |
 | 3D 室外/大场景、多线激光 + IMU | 选择经过目标 ROS 2 发行版验证的 LIO-SAM/FAST-LIO2 移植或其他 LIO；GPS/回环能力需单独核对 |
 | 视觉为主、纹理丰富 | ORB-SLAM3（单/双/RGB-D/鱼眼，视觉-惯性） |
 | RGB-D 室内、需要稠密地图 | RTAB-Map |
@@ -78,3 +78,12 @@ Assist with SLAM development and debugging on ROS/ROS 2: choosing a SLAM approac
 - `references/slam_selection.md` — 各 SLAM 方案对比与选型决策
 - `references/calibration.md` — 时间同步与各传感器标定流程
 - `references/tuning_and_errors.md` — 现象驱动的调参表与常见报错排查
+
+## 按需扩展与复用边界
+
+- 仅在明确相关的机器人任务中使用本技能；通用代码/网页/文案工作不加载机器人参考资料。
+- 按当前故障读取单个参考文件，不预读整个知识库。脚本路径相对技能目录，运行时解析成绝对路径。
+- 新架构、算法替换或明显重复实现前，使用可用的在线搜索核验论文及作者代码；若已安装可选的 `robotics-research-discovery`，可按需读取。小修复不强制联网。无网明确声明未核验，不能声称最新或无现成实现。
+- 本模块的补充检查见 `references/review_addendum.md`，仅在涉及其中问题时读取。
+
+- **图优化、误回环、轨迹对齐与评测** → `references/backend_and_evaluation.md`。

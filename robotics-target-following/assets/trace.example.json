@@ -1,0 +1,9 @@
+{
+  "max_age_s": 0.2,
+  "max_speed_mps": 0.4,
+  "max_abs_yaw_rate_rps": 0.5,
+  "samples": [
+    {"t": 1.0, "state": "TRACKING", "target_id": "authorized-target", "observation_t": 0.95, "safety_ok": true, "vx": 0.1, "wz": 0.0},
+    {"t": 2.0, "state": "LOST", "target_id": null, "observation_t": null, "safety_ok": true, "vx": 0.0, "wz": 0.0}
+  ]
+}

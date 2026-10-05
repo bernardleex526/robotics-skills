@@ -1,0 +1,29 @@
+{
+  "task": "",
+  "constraints": {},
+  "searched_at_utc": null,
+  "queries": [],
+  "coverage_limitations": [],
+  "candidates": [],
+  "decision": "defer",
+  "reason": "Evidence not collected",
+  "validation_plan": [],
+  "candidate_fields": [
+    "paper_url",
+    "official_repository",
+    "officiality_evidence",
+    "first_published",
+    "revision_date",
+    "commit",
+    "release",
+    "code_license",
+    "weights_license",
+    "dataset_license",
+    "ros_version",
+    "sensor_contract",
+    "resource_budget",
+    "benchmark_conditions",
+    "evidence_urls",
+    "unknowns"
+  ]
+}

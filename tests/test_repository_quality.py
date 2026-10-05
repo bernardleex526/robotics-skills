@@ -10,6 +10,17 @@ import yaml
 
 REPO = Path(__file__).resolve().parents[1]
 EXPECTED_SKILLS = {
+    "robotics-calibration-sync",
+    "robotics-data-replay",
+    "robotics-edge-deployment",
+    "robotics-lidar-odometry",
+    "robotics-localization-fusion",
+    "robotics-map-management",
+    "robotics-research-discovery",
+    "robotics-target-following",
+    "robotics-visual-slam",
+    "robotics-vln",
+
     "robotics-3d-perception",
     "robotics-benchmarking",
     "robotics-force-control",
@@ -383,7 +394,7 @@ class RepositoryQualityTests(unittest.TestCase):
         self.assertIn("不覆盖", text)
 
     def test_readme_states_engineering_expansion_contract(self) -> None:
-        text = (REPO / "README.md").read_text(encoding="utf-8")
+        text = (REPO / "README.md").read_text(encoding="utf-8") + "\n" + (REPO / "docs/legacy-guide.md").read_text(encoding="utf-8")
         for phrase in (
             "十四个可独立安装的技能",
             "工程准入",
@@ -407,7 +418,7 @@ class RepositoryQualityTests(unittest.TestCase):
             self.assertIn(skill, text)
 
     def test_readme_is_a_detailed_user_and_engineering_guide(self) -> None:
-        text = (REPO / "README.md").read_text(encoding="utf-8")
+        text = (REPO / "README.md").read_text(encoding="utf-8") + "\n" + (REPO / "docs/legacy-guide.md").read_text(encoding="utf-8")
         for heading in (
             "## 30 秒选择技能",
             "## 快速开始",

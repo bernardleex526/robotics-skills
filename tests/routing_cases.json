@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "status": "manual_client_execution_required",
+  "cases": [
+    {
+      "id": "route-01",
+      "kind": "negative",
+      "prompt": "帮我修复 React 导航栏的 active 状态",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-02",
+      "kind": "negative",
+      "prompt": "给旅游网站加一个地图组件",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-03",
+      "kind": "negative",
+      "prompt": "把这段求职邮件改得简短一点",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-04",
+      "kind": "negative",
+      "prompt": "实现关注用户和取消关注接口",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-05",
+      "kind": "negative",
+      "prompt": "优化这个通用 C++ 容器，保持接口不变",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-06",
+      "kind": "negative",
+      "prompt": "标定屏幕颜色并输出测试图片",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-07",
+      "kind": "positive",
+      "prompt": "FAST-LIO 转弯时墙面重影，bag 里有点时间和 IMU",
+      "acceptable_skills": [
+        "robotics-lidar-odometry",
+        "robotics-slam",
+        "robotics-calibration-sync"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-08",
+      "kind": "positive",
+      "prompt": "双目 VIO 初始化失败，帮我检查尺度与时间链",
+      "acceptable_skills": [
+        "robotics-visual-slam",
+        "robotics-calibration-sync"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-09",
+      "kind": "positive",
+      "prompt": "机器人听到去厨房门口后如何 grounding 并导航",
+      "acceptable_skills": [
+        "robotics-vln"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-10",
+      "kind": "positive",
+      "prompt": "机器人跟随的人被遮挡后追上了另一个人",
+      "acceptable_skills": [
+        "robotics-target-following"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-11",
+      "kind": "positive",
+      "prompt": "先查近一年的视觉语言导航论文和官方代码再决定是否自研",
+      "acceptable_skills": [
+        "robotics-research-discovery"
+      ],
+      "max_initial_skills": 1,
+      "network_required": true,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-12",
+      "kind": "positive",
+      "prompt": "轮速 IMU GNSS 融合后 map odom 跳变",
+      "acceptable_skills": [
+        "robotics-localization-fusion",
+        "robotics-ros2-infra"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-13",
+      "kind": "positive",
+      "prompt": "给机器人做 RGB-D 稠密地图和地图版本回滚",
+      "acceptable_skills": [
+        "robotics-map-management",
+        "robotics-visual-slam"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-14",
+      "kind": "positive",
+      "prompt": "rosbag2 seek 后 TF 超时，审计 header stamp",
+      "acceptable_skills": [
+        "robotics-data-replay",
+        "robotics-ros2-infra"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-15",
+      "kind": "mixed",
+      "prompt": "机器人仓库里的登录页按钮换颜色，不动 ROS",
+      "acceptable_skills": [],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-16",
+      "kind": "mixed",
+      "prompt": "机器人仪表盘地图旋转方向错误，检查 TF 和渲染",
+      "acceptable_skills": [
+        "robotics-frontend",
+        "robotics-ros2-infra"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    },
+    {
+      "id": "route-17",
+      "kind": "mixed",
+      "prompt": "只改 SLAM 日志里的拼写，不要调参数",
+      "acceptable_skills": [
+        "robotics-slam"
+      ],
+      "max_initial_skills": 1,
+      "network_required": false,
+      "assertion": "No robotics reference loads for empty acceptable_skills; otherwise start with one relevant skill, expand only with evidence."
+    }
+  ]
+}
